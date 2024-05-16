@@ -17,6 +17,7 @@
 		22BB796E2BF6235B00FE3C62 /* Sports_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB796D2BF6235B00FE3C62 /* Sports_AppTests.swift */; };
 		22BB79782BF6235B00FE3C62 /* Sports_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79772BF6235B00FE3C62 /* Sports_AppUITests.swift */; };
 		22BB797A2BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */; };
+		7DA81E562BF62D1500D8BDDD /* SecondStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		22BB79732BF6235B00FE3C62 /* Sports AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sports AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BB79772BF6235B00FE3C62 /* Sports_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_AppUITests.swift; sourceTree = "<group>"; };
 		22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +103,14 @@
 		22BB79522BF6235300FE3C62 /* Sports App */ = {
 			isa = PBXGroup;
 			children = (
+				7DA81E582BF62D5800D8BDDD /* Service */,
+				7DA81E572BF62D4300D8BDDD /* Model */,
+				7DA81E5B2BF62D8F00D8BDDD /* View */,
+				7DA81E592BF62D7000D8BDDD /* Moduels */,
 				22BB79532BF6235300FE3C62 /* AppDelegate.swift */,
 				22BB79552BF6235300FE3C62 /* SceneDelegate.swift */,
 				22BB79572BF6235300FE3C62 /* ViewController.swift */,
-				22BB79592BF6235300FE3C62 /* Main.storyboard */,
 				22BB795F2BF6235A00FE3C62 /* Assets.xcassets */,
-				22BB79612BF6235A00FE3C62 /* LaunchScreen.storyboard */,
 				22BB79642BF6235A00FE3C62 /* Info.plist */,
 				22BB795C2BF6235300FE3C62 /* Sports_App.xcdatamodeld */,
 			);
@@ -128,6 +132,45 @@
 				22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */,
 			);
 			path = "Sports AppUITests";
+			sourceTree = "<group>";
+		};
+		7DA81E572BF62D4300D8BDDD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7DA81E582BF62D5800D8BDDD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7DA81E592BF62D7000D8BDDD /* Moduels */ = {
+			isa = PBXGroup;
+			children = (
+				7DA81E5A2BF62D8800D8BDDD /* Home */,
+			);
+			path = Moduels;
+			sourceTree = "<group>";
+		};
+		7DA81E5A2BF62D8800D8BDDD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7DA81E5B2BF62D8F00D8BDDD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22BB79592BF6235300FE3C62 /* Main.storyboard */,
+				7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */,
+				22BB79612BF6235A00FE3C62 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +280,7 @@
 				22BB79632BF6235A00FE3C62 /* LaunchScreen.storyboard in Resources */,
 				22BB79602BF6235A00FE3C62 /* Assets.xcassets in Resources */,
 				22BB795B2BF6235300FE3C62 /* Main.storyboard in Resources */,
+				7DA81E562BF62D1500D8BDDD /* SecondStoryBoard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
