@@ -17,6 +17,7 @@
 		22BB796E2BF6235B00FE3C62 /* Sports_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB796D2BF6235B00FE3C62 /* Sports_AppTests.swift */; };
 		22BB79782BF6235B00FE3C62 /* Sports_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79772BF6235B00FE3C62 /* Sports_AppUITests.swift */; };
 		22BB797A2BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */; };
+		22C1344C2BF957A600248E82 /* LeaguesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C1344B2BF957A600248E82 /* LeaguesCollectionViewController.swift */; };
 		7DA81E562BF62D1500D8BDDD /* SecondStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */; };
 		7DE314372BF8CA61003D8A60 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE314362BF8CA61003D8A60 /* Decoding.swift */; };
 		7DE314392BF8CAEE003D8A60 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */; };
@@ -54,6 +55,7 @@
 		22BB79732BF6235B00FE3C62 /* Sports AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sports AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BB79772BF6235B00FE3C62 /* Sports_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_AppUITests.swift; sourceTree = "<group>"; };
 		22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22C1344B2BF957A600248E82 /* LeaguesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesCollectionViewController.swift; sourceTree = "<group>"; };
 		7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryBoard.storyboard; sourceTree = "<group>"; };
 		7DE314362BF8CA61003D8A60 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 		7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				22BB795F2BF6235A00FE3C62 /* Assets.xcassets */,
 				22BB79642BF6235A00FE3C62 /* Info.plist */,
 				22BB795C2BF6235300FE3C62 /* Sports_App.xcdatamodeld */,
+				22C1344B2BF957A600248E82 /* LeaguesCollectionViewController.swift */,
 			);
 			path = "Sports App";
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				22BB79582BF6235300FE3C62 /* ViewController.swift in Sources */,
 				22BB79542BF6235300FE3C62 /* AppDelegate.swift in Sources */,
 				22BB795E2BF6235300FE3C62 /* Sports_App.xcdatamodeld in Sources */,
+				22C1344C2BF957A600248E82 /* LeaguesCollectionViewController.swift in Sources */,
 				7DE314392BF8CAEE003D8A60 /* RemoteDataSource.swift in Sources */,
 				22BB79562BF6235300FE3C62 /* SceneDelegate.swift in Sources */,
 			);
