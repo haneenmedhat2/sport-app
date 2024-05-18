@@ -18,6 +18,8 @@
 		22BB79782BF6235B00FE3C62 /* Sports_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79772BF6235B00FE3C62 /* Sports_AppUITests.swift */; };
 		22BB797A2BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */; };
 		7DA81E562BF62D1500D8BDDD /* SecondStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */; };
+		7DE314372BF8CA61003D8A60 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE314362BF8CA61003D8A60 /* Decoding.swift */; };
+		7DE314392BF8CAEE003D8A60 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		22BB79772BF6235B00FE3C62 /* Sports_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_AppUITests.swift; sourceTree = "<group>"; };
 		22BB79792BF6235B00FE3C62 /* Sports_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryBoard.storyboard; sourceTree = "<group>"; };
+		7DE314362BF8CA61003D8A60 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
+		7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		22BB79522BF6235300FE3C62 /* Sports App */ = {
 			isa = PBXGroup;
 			children = (
+				7DE314352BF8CA4C003D8A60 /* Utility */,
 				7DA81E582BF62D5800D8BDDD /* Service */,
 				7DA81E572BF62D4300D8BDDD /* Model */,
 				7DA81E5B2BF62D8F00D8BDDD /* View */,
@@ -144,6 +149,8 @@
 		7DA81E582BF62D5800D8BDDD /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7DE314342BF8CA39003D8A60 /* LocalService */,
+				7DE314332BF8CA25003D8A60 /* NetworkService */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -151,6 +158,9 @@
 		7DA81E592BF62D7000D8BDDD /* Moduels */ = {
 			isa = PBXGroup;
 			children = (
+				7DE314322BF8C76F003D8A60 /* Team Details  */,
+				7DE314312BF8C700003D8A60 /* Leagues Details */,
+				7DE314302BF8C6E6003D8A60 /* Leagues(Fav and All) */,
 				7DA81E5A2BF62D8800D8BDDD /* Home */,
 			);
 			path = Moduels;
@@ -171,6 +181,50 @@
 				22BB79612BF6235A00FE3C62 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		7DE314302BF8C6E6003D8A60 /* Leagues(Fav and All) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Leagues(Fav and All)";
+			sourceTree = "<group>";
+		};
+		7DE314312BF8C700003D8A60 /* Leagues Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Leagues Details";
+			sourceTree = "<group>";
+		};
+		7DE314322BF8C76F003D8A60 /* Team Details  */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Team Details ";
+			sourceTree = "<group>";
+		};
+		7DE314332BF8CA25003D8A60 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		7DE314342BF8CA39003D8A60 /* LocalService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalService;
+			sourceTree = "<group>";
+		};
+		7DE314352BF8CA4C003D8A60 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7DE314362BF8CA61003D8A60 /* Decoding.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,9 +359,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE314372BF8CA61003D8A60 /* Decoding.swift in Sources */,
 				22BB79582BF6235300FE3C62 /* ViewController.swift in Sources */,
 				22BB79542BF6235300FE3C62 /* AppDelegate.swift in Sources */,
 				22BB795E2BF6235300FE3C62 /* Sports_App.xcdatamodeld in Sources */,
+				7DE314392BF8CAEE003D8A60 /* RemoteDataSource.swift in Sources */,
 				22BB79562BF6235300FE3C62 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
