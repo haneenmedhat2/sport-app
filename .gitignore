@@ -1,4 +1,5 @@
 
+
 *.xcuserstate
 *.xcuserstate
 *.xcuserstate
@@ -12,3 +13,7 @@ Sports App.xcodeproj/project.xcworkspace/xcuserdata/mayar.xcuserdatad/UserInterf
 
 UserInterfaceState.xcuserstate
 UserInterfaceState.xcuserstate
+Sports App.xcodeproj/project.xcworkspace/xcuserdata/haneenmedhat.xcuserdatad/UserInterfaceState.xcuserstate
+# Ignore Xcode user-specific data
+xcuserdata/
+*.xcuserstate
