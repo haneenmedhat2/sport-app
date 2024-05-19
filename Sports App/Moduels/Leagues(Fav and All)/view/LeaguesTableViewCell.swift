@@ -29,6 +29,13 @@ class LeaguesTableViewCell: UITableViewCell {
        // setimage by url alamofire
 //        if let url = URL(string: url) {
 //            image.kf.setImage(with: url, placeholder: UIImage(named: "noImage"))
+        
+        
+        // to make the photo circular and edddddddddddddddddddit in image attributes
+//        image.layer.masksToBounds = false
+//        image.layer.cornerRadius = image.frame.height/2
+//        image.clipsToBounds = true
+//
 //        }
     }
     

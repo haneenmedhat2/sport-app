@@ -8,6 +8,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="iP7-20-1Vx">
+            <objects>
+                <viewController id="kNw-rs-gel" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mAU-lP-tYz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxc-Fr-ES5">
+                                <rect key="frame" x="205" y="299" width="75" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="4N9-L1-MOd" kind="show" id="qeE-8l-lsN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Njc-gL-3gm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ir-Uz-LRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="-633"/>
+        </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -81,6 +107,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="838.93129770992368" y="-473.23943661971833"/>
+        </scene>
+        <!--SecondStoryBoard-->
+        <scene sceneID="gtk-Tq-cdG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SecondStoryBoard" id="4N9-L1-MOd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="esh-Tj-wVp"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4c-ec-Gp1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="-994"/>
         </scene>
         <!--Favourite-->
         <scene sceneID="2JI-u1-wl9">

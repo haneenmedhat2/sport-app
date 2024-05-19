@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LeguesModel : Codable {
+class LeguesModel : Decodable {
     // and it may retein more but here i need only these
     var name : String
     var image : String // as it will be URL
