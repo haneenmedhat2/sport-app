@@ -7,22 +7,24 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
 
 class LeaguesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
         let layout = UICollectionViewCompositionalLayout
         {sectionIndex,environment in
-            return self.drawUpComingEvents()
+            switch sectionIndex{
+            case 0:
+                return self.drawUpComingEvents()
+            case 1:
+                return self.drawLatestComingEvents()
+            default:
+                return self.drawTeams()
+                
+            }
+      
         }
         
         collectionView.setCollectionViewLayout(layout, animated:true)
@@ -56,6 +58,40 @@ class LeaguesCollectionViewController: UICollectionViewController {
             return section
         }
 
+    
+    func drawLatestComingEvents() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75), heightDimension: .absolute(230))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8 )
+        let section = NSCollectionLayoutSection(group: group)
+        
+        //section.orthogonalScrollingBehavior = .continuous
+        
+        //create padding between groups
+        section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0)
+        
+        return section
+    }
+    
+    
+    func drawTeams() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75), heightDimension: .absolute(230))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8 )
+        let section = NSCollectionLayoutSection(group: group)
+        
+        //section.orthogonalScrollingBehavior = .continuous
+        
+        //create padding between groups
+        section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0)
+        return section
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -70,20 +106,36 @@ class LeaguesCollectionViewController: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 3
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        switch section{
+        case 0:
+            return 10
+        case 1:
+            return 12
+        default:
+            return 15
+
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        var cellIdentifier :String = ""
+        switch indexPath.section{
+        case 0:
+            cellIdentifier = "upcoming"
+        case 1:
+            cellIdentifier = "latestEvent"
+        default:
+            cellIdentifier = "teams"
+        }
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         return cell
     }
 

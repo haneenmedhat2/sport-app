@@ -47,7 +47,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="upcoming" id="XcM-wx-T8k">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="upcoming" id="XcM-wx-T8k" customClass="UpcomingCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3aJ-Be-qdf">
@@ -117,8 +117,17 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="393" height="169"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="EQl-1B-gLz" id="R9n-4C-HyC"/>
+                                    <outlet property="firstTeamImg" destination="EBm-fi-Kpv" id="miD-h9-x52"/>
+                                    <outlet property="firstTeamLabel" destination="jmw-iD-3FL" id="lmy-dS-jeo"/>
+                                    <outlet property="leagueLabel" destination="dig-sf-aq1" id="j3B-yL-Frh"/>
+                                    <outlet property="secondTeamImg" destination="4w1-9q-IEE" id="0SZ-ry-Wid"/>
+                                    <outlet property="secondTeamLabel" destination="0m3-88-jKh" id="Eoh-MB-Z7g"/>
+                                    <outlet property="timeLabel" destination="pYr-Lb-1Cb" id="NZe-zs-RgR"/>
+                                </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="latestEvent" id="Tc3-NM-z37">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="latestEvent" id="Tc3-NM-z37" customClass="LatestEventsCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="179" width="393" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oEj-09-1HI">
@@ -172,8 +181,15 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="393" height="128"/>
+                                <connections>
+                                    <outlet property="firstTeamImg" destination="5lh-GY-eMv" id="DC3-kj-T9p"/>
+                                    <outlet property="firstTeamLabel" destination="J6N-cC-H9v" id="TLo-Vi-3vI"/>
+                                    <outlet property="scoreLabel" destination="eGf-PZ-hIg" id="6R0-Tp-Lks"/>
+                                    <outlet property="secondTeamImg" destination="gha-eq-cRX" id="8kw-Ui-AoX"/>
+                                    <outlet property="secondTeamLabel" destination="V4O-sW-0DQ" id="fne-ak-jFf"/>
+                                </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teams" id="q75-dt-Erj">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teams" id="q75-dt-Erj" customClass="TeamsCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
                                 <rect key="frame" x="102.66666666666667" y="317" width="188" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WxZ-xo-ggf">
@@ -205,6 +221,10 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="188" height="155"/>
+                                <connections>
+                                    <outlet property="teamImg" destination="WBt-mu-HTY" id="hax-HT-vBA"/>
+                                    <outlet property="teamLabel" destination="1yF-k9-oHb" id="5Sm-kr-gJu"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
