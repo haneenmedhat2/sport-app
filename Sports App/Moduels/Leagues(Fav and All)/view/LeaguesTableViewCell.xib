@@ -13,64 +13,68 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="LeaguesTableViewCell" customModule="Sports_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhR-PE-49e">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhR-PE-49e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q3I-pq-gpj">
-                                <rect key="frame" x="0.0" y="0.0" width="71" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="92" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="71" id="42Y-g2-Kra"/>
                                     <constraint firstAttribute="height" constant="44" id="MWR-vj-E84"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="t6f-2I-VKl"/>
+                                    <constraint firstAttribute="width" constant="92" id="tAP-bM-fOG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3C-2p-ijC">
-                                <rect key="frame" x="79" y="5.9999999999999982" width="171" height="20.333333333333329"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0s-MK-Xw8">
+                                <rect key="frame" x="245" y="0.0" width="75" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="Onl-jW-j3Y"/>
+                                    <constraint firstAttribute="width" constant="75" id="NsA-hE-FiA"/>
+                                    <constraint firstAttribute="height" constant="44" id="sHY-lV-r5R"/>
                                 </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="U"/>
+                                <connections>
+                                    <action selector="youTubeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7Q3-ff-K3X"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3C-2p-ijC">
+                                <rect key="frame" x="100" y="8" width="137" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0s-MK-Xw8">
-                                <rect key="frame" x="258" y="0.0" width="56" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="Z11-2c-V3j"/>
-                                    <constraint firstAttribute="height" constant="46" id="vzZ-EN-jLo"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="U"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="q3I-pq-gpj" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" id="NJn-dg-zRb"/>
-                            <constraint firstItem="q3I-pq-gpj" firstAttribute="leading" secondItem="hhR-PE-49e" secondAttribute="leading" id="Q5c-wN-wnm"/>
-                            <constraint firstItem="W3C-2p-ijC" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" constant="6" id="eQD-1s-rlz"/>
-                            <constraint firstItem="k0s-MK-Xw8" firstAttribute="leading" secondItem="W3C-2p-ijC" secondAttribute="trailing" constant="8" id="ey9-2y-wsx"/>
-                            <constraint firstAttribute="trailing" secondItem="k0s-MK-Xw8" secondAttribute="trailing" id="fgg-bP-T5H"/>
-                            <constraint firstItem="k0s-MK-Xw8" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" id="ieO-rM-guJ"/>
-                            <constraint firstItem="W3C-2p-ijC" firstAttribute="leading" secondItem="q3I-pq-gpj" secondAttribute="trailing" constant="8" id="ppu-Bg-1RD"/>
+                            <constraint firstAttribute="bottom" secondItem="W3C-2p-ijC" secondAttribute="bottom" constant="8" id="01h-se-nrW"/>
+                            <constraint firstAttribute="trailing" secondItem="k0s-MK-Xw8" secondAttribute="trailing" id="0WV-Zx-BMS"/>
+                            <constraint firstItem="W3C-2p-ijC" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" constant="8" id="79R-Fj-lKi"/>
+                            <constraint firstAttribute="bottom" secondItem="q3I-pq-gpj" secondAttribute="bottom" id="BFK-C9-WcA"/>
+                            <constraint firstAttribute="bottom" secondItem="k0s-MK-Xw8" secondAttribute="bottom" id="GjC-Sq-MmJ"/>
+                            <constraint firstItem="q3I-pq-gpj" firstAttribute="leading" secondItem="hhR-PE-49e" secondAttribute="leading" id="ZsG-bl-xC0"/>
+                            <constraint firstItem="q3I-pq-gpj" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" id="d4q-AT-Jn0"/>
+                            <constraint firstItem="k0s-MK-Xw8" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" id="ddf-0l-EUt"/>
+                            <constraint firstItem="W3C-2p-ijC" firstAttribute="leading" secondItem="q3I-pq-gpj" secondAttribute="trailing" constant="8" id="fS0-5A-tam"/>
+                            <constraint firstItem="k0s-MK-Xw8" firstAttribute="leading" secondItem="W3C-2p-ijC" secondAttribute="trailing" constant="8" id="sSp-Mj-Dza"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hhR-PE-49e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9ej-0Z-7d4"/>
-                    <constraint firstItem="hhR-PE-49e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Dz4-Q8-K72"/>
-                    <constraint firstItem="hhR-PE-49e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IIs-Sh-AjS"/>
-                    <constraint firstItem="hhR-PE-49e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Zgn-Pp-gnW"/>
-                    <constraint firstAttribute="bottom" secondItem="hhR-PE-49e" secondAttribute="bottom" id="ZzO-aI-9ei"/>
-                    <constraint firstItem="hhR-PE-49e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="dgR-yJ-SVX"/>
-                    <constraint firstItem="hhR-PE-49e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gFp-ix-42u"/>
-                    <constraint firstAttribute="trailing" secondItem="hhR-PE-49e" secondAttribute="trailing" id="s3M-f9-Z1M"/>
-                    <constraint firstAttribute="trailing" secondItem="hhR-PE-49e" secondAttribute="trailing" id="yjU-XW-MzA"/>
+                    <constraint firstAttribute="trailing" secondItem="hhR-PE-49e" secondAttribute="trailing" id="9Ly-AM-NQC"/>
+                    <constraint firstAttribute="bottom" secondItem="hhR-PE-49e" secondAttribute="bottom" id="Dfb-Z9-U5y"/>
+                    <constraint firstItem="hhR-PE-49e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ogh-Sr-rd7"/>
+                    <constraint firstItem="hhR-PE-49e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iQq-Vf-l8e"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="labelText" destination="W3C-2p-ijC" id="PE8-hq-L0e"/>
+                <outlet property="legImageView" destination="q3I-pq-gpj" id="WJT-rV-veD"/>
+                <outlet property="secondImageView" destination="k0s-MK-Xw8" id="uXL-U4-Aw1"/>
+            </connections>
             <point key="canvasLocation" x="103.81679389312977" y="-11.267605633802818"/>
         </tableViewCell>
     </objects>

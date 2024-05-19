@@ -23,6 +23,8 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
         
         collection.delegate = self
         collection.dataSource = self
+       
+
         
 //        collection.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
 //        //Football, Basketball, Cricket, Hockey, Baseball, American Football
