@@ -10,6 +10,9 @@ import UIKit
 class LeaguesTableViewController: UITableViewController {
 
     var leaguesArray = [Leagues]()
+    var comeFromHome :Bool?
+    var comeFromFav : Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,9 +20,17 @@ class LeaguesTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
         
-      
+        if comeFromHome ?? false {
+            //
+//            leaguesArray = call   api function from LeguesViewModel
+        }else if comeFromFav ?? false {
+//         leaguesArray = call local function   from LeguesViewModel
+            
+        }
+        
+        // the following for testing only
         leaguesArray.append(Leagues(name: "Football", image: "url1", youTube: "https://www.youtube.com/watch?v=5I7UApFUyc8"))
-        leaguesArray.append(Leagues(name: "Football", image: "url2", youTube: "link1"))
+        leaguesArray.append(Leagues(name: "Football", image: "url2", youTube: "https://www.facebook.com/gazaishereofficial/"))
         leaguesArray.append(Leagues(name: "Football", image: "url3", youTube: "link1"))
         leaguesArray.append(Leagues(name: "Football", image: "url4", youTube: "link1"))
         leaguesArray.append(Leagues(name: "Football", image: "url5", youTube: "link1"))
@@ -47,13 +58,10 @@ class LeaguesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ///
-        ///
-        ///
-        ///
-        ///
-        ///
-        ///
+//        let storyBoard = UIStoryboard(name: "", bundle: nil)
+//        let legaguesDetails = storyBoard.instantiateViewController(withIdentifier: "details")
+//        present(legaguesDetails,animated: true)
+//    
     }
 }
 
