@@ -26,7 +26,7 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
        
 
         
-//        collection.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        collection.register(UINib(nibName: "AllSportsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AllSportsCollectionViewCell")
 //        //Football, Basketball, Cricket, Hockey, Baseball, American Football
 
         sportArr.append(sports(name:"Football", image: UIImage(named:"3")!))
@@ -43,7 +43,7 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for:indexPath) as! AgainHomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AllSportsCollectionViewCell", for:indexPath) as! AllSportsCollectionViewCell
         let sport = sportArr[indexPath.row]
         cell.setUpCell(name: sport.name, photo: sport.image)
         return cell
