@@ -27,7 +27,6 @@
                                         <rect key="frame" x="69" y="0.0" width="149" height="190"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="190" id="ZeW-iK-ww8"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="nkU-Vl-o5S"/>
                                             <constraint firstAttribute="width" constant="149" id="tmt-5U-o0V"/>
                                         </constraints>
                                     </imageView>
@@ -40,8 +39,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="pjJ-ev-jEq" firstAttribute="leading" secondItem="Vft-mR-fjz" secondAttribute="leading" constant="15" id="JGs-1z-QN2"/>
-                                    <constraint firstItem="pjJ-ev-jEq" firstAttribute="top" secondItem="Vft-mR-fjz" secondAttribute="top" constant="10" id="f4w-jw-r98"/>
-                                    <constraint firstItem="pjJ-ev-jEq" firstAttribute="top" secondItem="Vft-mR-fjz" secondAttribute="top" constant="10" id="yg1-lc-Zn8"/>
                                 </constraints>
                             </stackView>
                         </subviews>
