@@ -15,7 +15,7 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     
     var namesArray = ["footbale","basketboll","volly"]
     var imageArray = ["1","2","3","4"]
-    
+    /////
     @IBOutlet weak var collection: UICollectionView!
     
     override func viewDidLoad() {
