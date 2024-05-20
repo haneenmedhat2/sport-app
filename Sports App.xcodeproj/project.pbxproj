@@ -30,7 +30,6 @@
 		7D97E0BE2BF98BC700E22F30 /* LeguesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D97E0BD2BF98BC700E22F30 /* LeguesModel.swift */; };
 		7DA81E562BF62D1500D8BDDD /* SecondStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */; };
 		7DE314372BF8CA61003D8A60 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE314362BF8CA61003D8A60 /* Decoding.swift */; };
-		7DE314392BF8CAEE003D8A60 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +77,6 @@
 		7D97E0BD2BF98BC700E22F30 /* LeguesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeguesModel.swift; sourceTree = "<group>"; };
 		7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryBoard.storyboard; sourceTree = "<group>"; };
 		7DE314362BF8CA61003D8A60 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
-		7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,7 +262,6 @@
 		7DE314332BF8CA25003D8A60 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-				7DE314382BF8CAEE003D8A60 /* RemoteDataSource.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -429,7 +426,6 @@
 				22BB795E2BF6235300FE3C62 /* Sports_App.xcdatamodeld in Sources */,
 				7D97E0BE2BF98BC700E22F30 /* LeguesModel.swift in Sources */,
 				7D97E0B22BF9732D00E22F30 /* AgainHomeCollectionViewCell.swift in Sources */,
-				7DE314392BF8CAEE003D8A60 /* RemoteDataSource.swift in Sources */,
 				7D97E0BC2BF98B0500E22F30 /* LeguesViewModel.swift in Sources */,
 				22BB79562BF6235300FE3C62 /* SceneDelegate.swift in Sources */,
 				7D97E0B02BF963C500E22F30 /* HomeCollectionViewCell.swift in Sources */,

@@ -8,11 +8,8 @@
 import Foundation
 
 class DataService {
+            
+        
     
-    static func getAllLeguesFromApi(url: String) -> {
-        
-        
-        
-    }
     
 }
