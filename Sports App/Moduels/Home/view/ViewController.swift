@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout,
                       UICollectionViewDataSource {
@@ -17,9 +18,12 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     
     @IBOutlet weak var collection: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        print("view did load")
+
         
         collection.delegate = self
         collection.dataSource = self
