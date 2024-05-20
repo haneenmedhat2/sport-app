@@ -13,4 +13,6 @@ class TeamsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var teamLabel: UILabel!
     
+    
+    
 }
