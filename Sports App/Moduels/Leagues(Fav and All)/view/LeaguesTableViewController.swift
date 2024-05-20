@@ -26,14 +26,24 @@ class LeaguesTableViewController: UITableViewController {
         newtworkIndicator!.center = view.center
         newtworkIndicator!.startAnimating()
         view.addSubview(newtworkIndicator!)
+       
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
+ }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         newtworkIndicator!.startAnimating()
-        
+
         if let sportName = sportName {
-                print("Selected sport: \(sportName)")
-                let lowercaseSportName = sportName.lowercased()
-                print("Selected sport after: \(lowercaseSportName)")
+            let lowercaseSportName = sportName.lowercased()
+            
+            if sportName == "Hockey" || sportName == "Baseball" || sportName == "American" || sportName == "American Football" {
+                print (" is name of not data")
+                newtworkIndicator?.stopAnimating()
+                showAlert()
                 
-                leguesViewModel?.getDataFromAPI(lowercaseSportName: sportName)
+            }else {
+                leguesViewModel?.getDataFromAPI(lowercaseSportName: lowercaseSportName)
                 leguesViewModel?.bindResultToViewController = { [weak self] in
                     DispatchQueue.main.async {
                         self?.leaguesArray = self?.leguesViewModel?.allLegues ?? []
@@ -43,26 +53,25 @@ class LeaguesTableViewController: UITableViewController {
                         self?.newtworkIndicator?.stopAnimating()
                     }
                 }
-
+            }
         }else if comeFromFav ?? false {
-//         leaguesArray = call local function   from LeguesViewModel
-            tableView.reloadData()
-            newtworkIndicator?.stopAnimating()
+  //         leaguesArray = call local function   from LeguesViewModel
+                tableView.reloadData()
+                newtworkIndicator?.stopAnimating()
         }
-            
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
-            
-        // the following for testing only
-//        leaguesArray = [
-//            Leagues(name: "Football", image: "url1", youTube: "https://www.youtube.com/watch?v=5I7UApFUyc8"),
-//            Leagues(name: "Football", image: "url2", youTube: "https://www.facebook.com/gazaishereofficial/"),
-//            Leagues(name: "Football", image: "url3", youTube: "link1"),
-//            Leagues(name: "Football", image: "url4", youTube: "link1"),
-//            Leagues(name: "Football", image: "url5", youTube: "link1")]
-  }
+    }
     
+    func showAlert (){
+                
+        let alert = UIAlertController(title: "Alert", message: "Sorry No Data", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+              self.dismiss(animated: true, completion: nil) 
+          })
+                self.present(alert, animated: true, completion: nil)
+        
+    }
+
     
     // MARK: - Table view data source
 

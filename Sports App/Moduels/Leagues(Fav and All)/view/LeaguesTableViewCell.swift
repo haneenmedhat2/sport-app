@@ -23,7 +23,9 @@ class LeaguesTableViewCell: UITableViewCell {
         labelText.text = name
         // to make the photo circular and edddddddddddddddddddit in image attributes
        
-        guard let imageUrl = imageUrl else {return }
+        guard let imageUrl = imageUrl else {
+            legImageView.image =  UIImage(named: "logo")
+            return }
         if let url = URL(string: imageUrl) {
             legImageView.kf.setImage(with: url, placeholder: UIImage(named: "l"))
         }
