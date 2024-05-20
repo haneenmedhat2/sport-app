@@ -23,15 +23,21 @@ class LeaguesTableViewCell: UITableViewCell {
         labelText.text = name
         // to make the photo circular and edddddddddddddddddddit in image attributes
 
-        legImageView.layer.masksToBounds = false
-       // legImageView.layer.cornerRadius = image.frame.height/2
-        legImageView.clipsToBounds = true
        
         guard let imageUrl = imageUrl else {return }
         if let url = URL(string: imageUrl) {
             legImageView.kf.setImage(with: url, placeholder: UIImage(named: "noImage"))
+                     
         }
     }
+
+     override func layoutSubviews() {
+         super.layoutSubviews()
+         legImageView.layer.masksToBounds = false
+         legImageView.layer.cornerRadius = legImageView.frame.height / 2
+         legImageView.clipsToBounds = true
+     }
+    
     
     @IBAction func youTubeButton(_ sender: UIButton) {
             guard let urlString = youTubeLink,
