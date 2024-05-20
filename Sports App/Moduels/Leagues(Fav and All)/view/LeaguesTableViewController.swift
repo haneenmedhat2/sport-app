@@ -40,7 +40,7 @@ class LeaguesTableViewController: UITableViewController {
             if sportName == "Hockey" || sportName == "Baseball" || sportName == "American" || sportName == "American Football" {
                 print (" is name of not data")
                 newtworkIndicator?.stopAnimating()
-                showAlert()
+                showAlert(message: "Sorry No Available Data For This Sport")
                 
             }else {
                 leguesViewModel?.getDataFromAPI(lowercaseSportName: lowercaseSportName)
@@ -48,7 +48,9 @@ class LeaguesTableViewController: UITableViewController {
                     DispatchQueue.main.async {
                         self?.leaguesArray = self?.leguesViewModel?.allLegues ?? []
                         print("Fetched leagues in view controll: \(String(describing: self?.leaguesArray))")
-                        
+                        if ((self?.leaguesArray.isEmpty) != nil) {
+                            self?.showAlert (message:" Please Check your network")
+                        }
                         self?.tableView.reloadData()
                         self?.newtworkIndicator?.stopAnimating()
                     }
@@ -56,17 +58,18 @@ class LeaguesTableViewController: UITableViewController {
             }
         }else if comeFromFav ?? false {
   //         leaguesArray = call local function   from LeguesViewModel
+            
                 tableView.reloadData()
                 newtworkIndicator?.stopAnimating()
         }
         
     }
     
-    func showAlert (){
+    func showAlert (message:String ){
                 
-        let alert = UIAlertController(title: "Alert", message: "Sorry No Data", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Alert", message: message , preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-              self.dismiss(animated: true, completion: nil) 
+              self.dismiss(animated: true, completion: nil)
           })
                 self.present(alert, animated: true, completion: nil)
         
