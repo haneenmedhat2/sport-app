@@ -10,13 +10,20 @@ import UIKit
 class LeaguesTableViewController: UITableViewController {
 
     var leaguesArray = [Leagues]()
-    var comeFromHome :Bool?
     var comeFromFav : Bool?
-    
-    
-    //mmmm
+    var sportName: String?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if let sportName = sportName {
+            print("Selected sport: \(sportName) and  comeFromHome\(String(describing: comeFromHome))")
+                   // Here you can use the selected sport's name
+               }
+        print(" comeFromHome\(String(describing: comeFromHome))")
+
         
         
         tableView.rowHeight = UITableView.automaticDimension

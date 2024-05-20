@@ -12,34 +12,29 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
                       UICollectionViewDataSource {
 
     var sportArr = [sports]()
-    
-    var namesArray = ["footbale","basketboll","volly"]
-    var imageArray = ["1","2","3","4"]
-    
+        
     @IBOutlet weak var collection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        print("view did load")
-
+                
+//        print("view did load")
+//        FetchDataFromNetwork.fetchLeg(sportName: "HHHH")
+//        
         
         collection.delegate = self
         collection.dataSource = self
        
 
-        
         collection.register(UINib(nibName: "AllSportsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AllSportsCollectionViewCell")
 //        //Football, Basketball, Cricket, Hockey, Baseball, American Football
-
-        sportArr.append(sports(name:"Football", image: UIImage(named:"3")!))
-        sportArr.append(sports(name:"Basketball", image: UIImage(named:"2")!))
-        sportArr.append(sports(name:"Cricket", image: UIImage(named:"3")!))
-        sportArr.append(sports(name:"Hockey", image: UIImage(named:"2")!))
-        sportArr.append(sports(name:"Baseball", image: UIImage(named:"3")!))
-        sportArr.append(sports(name:"American Football", image: UIImage(named:"2")!))
-        
+        sportArr = [ 
+            sports(name:"Football", image:UIImage(named:"f")!),
+            sports(name:"Basketball", image: UIImage(named:"bascket")!),
+            sports(name:"Cricket", image: UIImage(named:"c")!),
+            sports(name:"Hockey", image: UIImage(named:"h")!),
+            sports(name:"Baseball", image: UIImage(named:"base")!),
+            sports(name:"American Football", image: UIImage(named:"a")!)]
     }
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,7 +58,14 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+  
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let selectedSport = sportArr[indexPath.row]
+            if let sportDetailsVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
+                sportDetailsVC.sportName = selectedSport.name
+                self.present(sportDetailsVC, animated: true, completion: nil)
+            }
+    }
 }
 
 struct sports{

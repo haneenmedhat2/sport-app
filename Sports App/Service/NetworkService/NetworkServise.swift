@@ -32,7 +32,7 @@ class FetchDataFromNetwork {
      }
      
      */
-    func fetchLeg (sportName : String){
+   static  func fetchLeg (sportName : String){
         
         AF.request("https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df").responseJSON { response in
             switch response.result {
