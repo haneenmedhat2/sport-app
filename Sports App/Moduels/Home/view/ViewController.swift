@@ -19,7 +19,6 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
         super.viewDidLoad()
                 
 //        print("view did load")
-//        FetchDataFromNetwork.fetchLeg(sportName: "HHHH")
 //        
         
         collection.delegate = self
@@ -71,5 +70,4 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
 struct sports{
     let name : String
     let image : UIImage
-    //should make it as string i guess
 }

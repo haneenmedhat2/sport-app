@@ -7,10 +7,14 @@
 
 import Foundation
 
-class LeguesModel : Decodable {
-    // and it may retein more but here i need only these
-    var name : String
-    var image : String // as it will be URL
-    var youTube : String
 
+struct Leagues: Codable {
+    let league_name: String?
+    let league_logo: String?
 }
+
+struct LeaguesResponse: Codable {
+    let success: Int
+    let result: [Leagues]
+}
+
