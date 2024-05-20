@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AllSportsCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="287" height="469"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="469"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgB-yA-q8D">
+                        <rect key="frame" x="0.0" y="0.0" width="287" height="469"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-mR-fjz">
+                                <rect key="frame" x="0.0" y="0.0" width="287" height="469"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-ev-jEq">
+                                        <rect key="frame" x="69" y="0.0" width="149" height="190"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="190" id="ZeW-iK-ww8"/>
+                                            <constraint firstAttribute="width" constant="149" id="tmt-5U-o0V"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDe-T2-Toa">
+                                        <rect key="frame" x="122.99999999999999" y="200" width="41.333333333333329" height="269"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pjJ-ev-jEq" firstAttribute="leading" secondItem="Vft-mR-fjz" secondAttribute="leading" constant="15" id="JGs-1z-QN2"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vft-mR-fjz" firstAttribute="leading" secondItem="HgB-yA-q8D" secondAttribute="leading" id="61y-xI-73v"/>
+                            <constraint firstAttribute="trailing" secondItem="Vft-mR-fjz" secondAttribute="trailing" id="BIH-g1-o40"/>
+                            <constraint firstItem="Vft-mR-fjz" firstAttribute="top" secondItem="HgB-yA-q8D" secondAttribute="top" id="dWT-1V-Ugg"/>
+                            <constraint firstAttribute="bottom" secondItem="Vft-mR-fjz" secondAttribute="bottom" id="rbe-Wt-1el"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="HgB-yA-q8D" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DCu-Hg-XaH"/>
+                <constraint firstItem="HgB-yA-q8D" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eP8-uj-NhG"/>
+                <constraint firstAttribute="bottom" secondItem="HgB-yA-q8D" secondAttribute="bottom" id="fP0-Re-9Jf"/>
+                <constraint firstAttribute="trailing" secondItem="HgB-yA-q8D" secondAttribute="trailing" id="gSu-8B-hUQ"/>
+            </constraints>
+            <size key="customSize" width="287" height="469"/>
+            <connections>
+                <outlet property="AllSportsImage" destination="pjJ-ev-jEq" id="pjg-Nk-tnU"/>
+                <outlet property="AllSportsText" destination="iDe-T2-Toa" id="FfC-1t-79B"/>
+            </connections>
+            <point key="canvasLocation" x="216.03053435114504" y="78.521126760563391"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
