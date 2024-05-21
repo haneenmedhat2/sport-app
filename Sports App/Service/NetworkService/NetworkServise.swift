@@ -49,5 +49,25 @@ class FetchDataFromNetwork {
         
     }
     
+
     
+    func fetchUpcomingEvents(leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/football/?met=Fixtures&leagueId=\(leaguId)&from=2023-01-18&to=2024-01-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+        
+        AF.request(url).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let apiResponse = try decoder.decode(UpcomingResponse.self, from: data)
+                    completion(.success(apiResponse))
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
+    
