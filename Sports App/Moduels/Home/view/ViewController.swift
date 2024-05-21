@@ -58,7 +58,9 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let selectedSport = sportArr[indexPath.row]
             if let sportDetailsVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
+                
                 sportDetailsVC.sportName = selectedSport.name
+                
                 self.present(sportDetailsVC, animated: true, completion: nil)
             }
     }

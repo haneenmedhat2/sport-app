@@ -20,6 +20,7 @@ class LeaguesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         leguesViewModel = LeguesViewModel()
         
         newtworkIndicator = UIActivityIndicatorView (style: .large)
@@ -30,6 +31,7 @@ class LeaguesTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         newtworkIndicator!.startAnimating()
@@ -45,6 +47,7 @@ class LeaguesTableViewController: UITableViewController {
                 let lowercaseSportName = sportName.lowercased()
 
                 leguesViewModel?.getDataFromAPI(lowercaseSportName: lowercaseSportName)
+                
                 leguesViewModel?.bindResultToViewController = { [weak self] in
                     DispatchQueue.main.async {
                         self?.leaguesArray = self?.leguesViewModel?.allLegues ?? []
@@ -61,7 +64,7 @@ class LeaguesTableViewController: UITableViewController {
                     }
                 }
             }
-        }else if comeFromFav ?? false {
+        } else if comeFromFav ?? false {
             //         leaguesArray = call local function   from LeguesViewModel from core data
             
             tableView.reloadData()
@@ -114,7 +117,7 @@ class LeaguesTableViewController: UITableViewController {
             
         }else {
             print("Internet is off")
-            showAlert (message:" Please Check your network")
+            showAlert (message:" Please Check your network to show the details of leagues")
         }
     }
     

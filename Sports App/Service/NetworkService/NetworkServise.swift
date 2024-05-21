@@ -11,9 +11,7 @@ import Alamofire
 class FetchDataFromNetwork {
        
      static func fetchLeg (sportName: String , completion: @escaping ([Leagues]?) -> Void) {
-         print (" in fetching network service function")
-                  print ("sport name is \(sportName)")
-         var url =  "https://apiv2.allsportsapi.com/\(sportName)/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+            var url =  "https://apiv2.allsportsapi.com/\(sportName)/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
 
          AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
           switch response.result {
@@ -30,6 +28,8 @@ class FetchDataFromNetwork {
              }
          }
      }
+    
+    
     
     static func fetchTeamData (teamKey: Int ,sportName: String, completion: @escaping (TeamResponse?) -> Void) {
         var url = "https://apiv2.allsportsapi.com/\(sportName)/?&met=Teams&teamId=\(teamKey)&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
