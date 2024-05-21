@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Reachability
 
 class LeguesViewModel {
             
@@ -17,10 +16,7 @@ class LeguesViewModel {
                 bindResultToViewController()
             }
         }
-            
-    // check the name of sport first and internet connection
-
-    
+           
         func getDataFromAPI(lowercaseSportName: String) {
             
             print ("in get data from api")

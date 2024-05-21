@@ -15,8 +15,7 @@ class LeaguesTableViewController: UITableViewController {
     var sportName: String?
     
     var leguesViewModel : LeguesViewModel?
-    
-    
+        
     var newtworkIndicator : UIActivityIndicatorView?
     
     override func viewDidLoad() {
@@ -36,7 +35,6 @@ class LeaguesTableViewController: UITableViewController {
         newtworkIndicator!.startAnimating()
         
         if let sportName = sportName {
-            let lowercaseSportName = sportName.lowercased()
             
             if sportName == "Hockey" || sportName == "Baseball" || sportName == "American" || sportName == "American Football" {
                 print (" is name of not data")
@@ -44,6 +42,8 @@ class LeaguesTableViewController: UITableViewController {
                 showAlert(message: "Sorry No Available Data For This Sport")
                 
             }else {
+                let lowercaseSportName = sportName.lowercased()
+
                 leguesViewModel?.getDataFromAPI(lowercaseSportName: lowercaseSportName)
                 leguesViewModel?.bindResultToViewController = { [weak self] in
                     DispatchQueue.main.async {
@@ -62,7 +62,7 @@ class LeaguesTableViewController: UITableViewController {
                 }
             }
         }else if comeFromFav ?? false {
-            //         leaguesArray = call local function   from LeguesViewModel
+            //         leaguesArray = call local function   from LeguesViewModel from core data
             
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()

@@ -15,12 +15,12 @@ struct TeamResponse: Codable {
 struct TeamMemberAndInformation : Codable {
     let team_name: String?
     let team_logo : String?    
-    let teamMember : TeamPlayer?
+    let teamMember : [TeamPlayer]?
 }
-
 
 struct TeamPlayer : Codable {
     let player_name : String?
     let player_image : String?
+    let player_birthdate : String?
 }
 

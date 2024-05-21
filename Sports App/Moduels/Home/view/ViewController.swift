@@ -17,9 +17,6 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-//        print("view did load")
-//        
         
         collection.delegate = self
         collection.dataSource = self
