@@ -48,6 +48,12 @@ class LeaguesCollectionViewController: UICollectionViewController {
                         self?.collectionView.reloadData()
               }
         }
+        
+        viewModel.latestEventsDidChange = { [weak self] events in
+            DispatchQueue.main.async {
+                        self?.collectionView.reloadData()
+              }
+        }
         fetchUpcomingEvents()
 
     }
@@ -57,13 +63,22 @@ class LeaguesCollectionViewController: UICollectionViewController {
         viewModel.fetchUpcomingEvents(sport: "football", leagueId: 205) { result in
                switch result {
                case .success(let events):
-                   print("Fetched events: \(events)")
+                   print("Fetched events: ")
                case .failure(let error):
-                   print("Error fetching events: \(error)")
+                   print("Error fetching events: ")
                }
            }
         
         viewModel.fetchLatestEvents(sport: "football", leagueId: 205) { result in
+               switch result {
+               case .success(let events):
+                   print("Fetched events: )")
+               case .failure(let error):
+                   print("Error fetching events: ")
+               }
+           }
+        
+        viewModel.fetchTeams(sport: "football", leagueId: 205) { result in
                switch result {
                case .success(let events):
                    print("Fetched events: \(events)")
@@ -171,7 +186,7 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
     case 1:
         return viewModel.latestEvents.count
     default:
-        return 15
+        return viewModel.teams.count
 
     }
 }
@@ -250,6 +265,14 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
         cellIdentifier = "teams"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TeamsCollectionViewCell
             
+        let obj = viewModel.teams[indexPath.row]
+      
+        cell.teamLabel.text = obj.team_name
+        if let logo = obj.team_logo, let logoURL = URL(string: logo) {
+            cell.teamImg.kf.setImage(with: logoURL)
+        } else {
+            cell.teamImg.image = UIImage(named: "teams.png")
+        }
         return cell
     }
     fatalError("Unexpected section in collectionView")
