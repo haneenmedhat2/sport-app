@@ -16,6 +16,8 @@ class LeaguesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.register(UINib(nibName: "EmptyStateCell", bundle: nil), forCellWithReuseIdentifier: "emptyStateCell")
 
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
 
@@ -40,12 +42,28 @@ class LeaguesCollectionViewController: UICollectionViewController {
                         self?.collectionView.reloadData()
               }
         }
+        
+        viewModel.latestEventsDidChange = { [weak self] events in
+            DispatchQueue.main.async {
+                        self?.collectionView.reloadData()
+              }
+        }
         fetchUpcomingEvents()
 
     }
     
     private func fetchUpcomingEvents() {
-        viewModel.fetchUpcomingEvents(sport: "basketball", leagueId: 1098) { result in
+        //sport: "cricket", leagueId: 733
+        viewModel.fetchUpcomingEvents(sport: "football", leagueId: 205) { result in
+               switch result {
+               case .success(let events):
+                   print("Fetched events: \(events)")
+               case .failure(let error):
+                   print("Error fetching events: \(error)")
+               }
+           }
+        
+        viewModel.fetchLatestEvents(sport: "football", leagueId: 205) { result in
                switch result {
                case .success(let events):
                    print("Fetched events: \(events)")
@@ -151,7 +169,7 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
     case 0:
         return  viewModel.upcomingEvents.count
     case 1:
-        return 5
+        return viewModel.latestEvents.count
     default:
         return 15
 
@@ -160,46 +178,71 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
 
 override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     var cellIdentifier :String = ""
-//    switch indexPath.section{
-//    case 0:
-//        cellIdentifier = "upcoming"
-//    case 1:
-//        cellIdentifier = "latestEvent"
-//    default:
-//        cellIdentifier = "teams"
-//    }
+
     if indexPath.section == 0 {
-        cellIdentifier = "upcoming"
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UpcomingCollectionViewCell
-        
-        let obj = viewModel.upcomingEvents[indexPath.row]
-        cell.dateLabel.text = obj.event_date
-               cell.timeLabel.text = obj.event_time
-               cell.leagueLabel.text = obj.league_name
-               cell.firstTeamLabel.text = obj.event_home_team
-               cell.secondTeamLabel.text = obj.event_away_team
-
-        if let imageURL = URL(string: obj.home_team_logo) {
-            cell.firstTeamImg.kf.setImage(with: imageURL)
-               } else {
-                   cell.firstTeamImg.image = UIImage(named: "placeholder")
-               }
-        
-        if let imageURL = URL(string: obj.away_team_logo) {
-            cell.secondTeamImg.kf.setImage(with: imageURL)
-               } else {
-                   cell.firstTeamImg.image = UIImage(named: "placeholder")
-               }
-
-        
+        if viewModel.upcomingEvents.isEmpty {
+            cellIdentifier = "emptyStateCell"
+                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+                      if let emptyImage = UIImage(named: "nothing.jpeg") {
+                          let imageView = UIImageView(image: emptyImage)
+                          imageView.contentMode = .scaleAspectFill
+                          imageView.frame = cell.contentView.bounds
+                          cell.contentView.addSubview(imageView)
+                      }
+                      return cell
             
-        return cell
+        }else{
+            cellIdentifier = "upcoming"
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UpcomingCollectionViewCell
+            
+            let obj = viewModel.upcomingEvents[indexPath.row]
+            cell.dateLabel.text = obj.event_date
+            cell.timeLabel.text = obj.event_time
+            cell.leagueLabel.text = obj.league_name
+            cell.firstTeamLabel.text = obj.event_home_team
+            cell.secondTeamLabel.text = obj.event_away_team
+            
+            if let homeTeamLogoURLString = obj.home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+            } else {
+                cell.firstTeamImg.image = UIImage(named: "teams.png") // Placeholder image
+            }
+            
+            if let awayTeamLogoURLString = obj.away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+            } else {
+                cell.secondTeamImg.image = UIImage(named: "teams.png") // Placeholder image
+            }
+            
+            
+            return cell
+        }
     }
+    
     
     if indexPath.section == 1 {
         cellIdentifier = "latestEvent"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! LatestEventsCollectionViewCell
             
+        let obj = viewModel.latestEvents[indexPath.row]
+      
+        cell.firstTeamLabel.text = obj.event_home_team
+        cell.secondTeamLabel.text = obj.event_away_team
+        cell.scoreLabel.text = obj.event_final_result
+        
+        if let homeTeamLogoURLString = obj.home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+            cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+        } else {
+            cell.firstTeamImg.image = UIImage(named: "teams.png")
+        }
+        
+        if let awayTeamLogoURLString = obj.away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+            cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+        } else {
+            cell.secondTeamImg.image = UIImage(named: "teams.png")
+        }
+        
+        
         return cell
     }
     
@@ -213,38 +256,6 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
 
 }
 
-
-
-// MARK: UICollectionViewDelegate
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-    return true
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-    return true
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-    return false
-}
-
-override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-    return false
-}
-
-override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-
-}
-*/
 
 }
 
