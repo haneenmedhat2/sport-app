@@ -1,15 +1,13 @@
 //
-//  LeguesModel.swift
+//  Team.swift
 //  Sports App
 //
-//  Created by Mayar on 19/05/2024.
+//  Created by Mayar on 21/05/2024.
 //
 
 import Foundation
 
-
-struct Leagues: Codable {
-    let league_name: String?
+struct Team: Codable {
     let league_logo: String?
     let league_key : Int?
 }
