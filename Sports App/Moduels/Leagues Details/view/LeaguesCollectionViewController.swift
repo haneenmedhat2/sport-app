@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "Cell"
 
 class LeaguesCollectionViewController: UICollectionViewController {
+    
+    let viewModel = UpComingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +32,28 @@ class LeaguesCollectionViewController: UICollectionViewController {
             }
     
         }
-        
+
         collectionView.setCollectionViewLayout(layout, animated:true)
+        
+        viewModel.eventsDidChange = { [weak self] events in
+            DispatchQueue.main.async {
+                        self?.collectionView.reloadData()
+              }
+        }
+        fetchUpcomingEvents()
+
     }
+    
+    private func fetchUpcomingEvents() {
+        viewModel.fetchUpcomingEvents(sport: "basketball", leagueId: 1098) { result in
+               switch result {
+               case .success(let events):
+                   print("Fetched events: \(events)")
+               case .failure(let error):
+                   print("Error fetching events: \(error)")
+               }
+           }
+       }
 
     
     func drawUpComingEvents() -> NSCollectionLayoutSection{
@@ -127,7 +149,7 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
     // #warning Incomplete implementation, return the number of items
     switch section{
     case 0:
-        return 10
+        return  viewModel.upcomingEvents.count
     case 1:
         return 5
     default:
@@ -138,20 +160,57 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
 
 override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     var cellIdentifier :String = ""
-    switch indexPath.section{
-    case 0:
+//    switch indexPath.section{
+//    case 0:
+//        cellIdentifier = "upcoming"
+//    case 1:
+//        cellIdentifier = "latestEvent"
+//    default:
+//        cellIdentifier = "teams"
+//    }
+    if indexPath.section == 0 {
         cellIdentifier = "upcoming"
-    case 1:
-        cellIdentifier = "latestEvent"
-    default:
-        cellIdentifier = "teams"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UpcomingCollectionViewCell
+        
+        let obj = viewModel.upcomingEvents[indexPath.row]
+        cell.dateLabel.text = obj.event_date
+               cell.timeLabel.text = obj.event_time
+               cell.leagueLabel.text = obj.league_name
+               cell.firstTeamLabel.text = obj.event_home_team
+               cell.secondTeamLabel.text = obj.event_away_team
+
+        if let imageURL = URL(string: obj.home_team_logo) {
+            cell.firstTeamImg.kf.setImage(with: imageURL)
+               } else {
+                   cell.firstTeamImg.image = UIImage(named: "placeholder")
+               }
+        
+        if let imageURL = URL(string: obj.away_team_logo) {
+            cell.secondTeamImg.kf.setImage(with: imageURL)
+               } else {
+                   cell.firstTeamImg.image = UIImage(named: "placeholder")
+               }
+
+        
+            
+        return cell
     }
     
+    if indexPath.section == 1 {
+        cellIdentifier = "latestEvent"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! LatestEventsCollectionViewCell
+            
+        return cell
+    }
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-    
+    if indexPath.section == 2 {
+        cellIdentifier = "teams"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TeamsCollectionViewCell
+            
+        return cell
+    }
+    fatalError("Unexpected section in collectionView")
 
-    return cell
 }
 
 

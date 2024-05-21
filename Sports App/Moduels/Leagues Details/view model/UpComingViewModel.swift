@@ -23,8 +23,8 @@ class UpComingViewModel{
         self.fetchDataFromNetwork = fetchDataFromNetwork
     }
     
-    func fetchUpcomingEvents(leagueId: Int, completion: @escaping (Result<[Event], Error>) -> Void) {
-        fetchDataFromNetwork.fetchUpcomingEvents(leaguId: leagueId) { result in
+    func fetchUpcomingEvents(sport:String,leagueId: Int, completion: @escaping (Result<[Event], Error>) -> Void) {
+        fetchDataFromNetwork.fetchUpcomingEvents(sport:sport,leaguId: leagueId) { result in
             switch result {
             case .success(let response):
                 self.upcomingEvents = response.result
