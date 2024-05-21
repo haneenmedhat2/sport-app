@@ -69,7 +69,7 @@ func drawLatestComingEvents() -> NSCollectionLayoutSection{
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
     let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
     let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-    group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0)
+    group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
     let section = NSCollectionLayoutSection(group: group)
     
     
@@ -78,6 +78,8 @@ func drawLatestComingEvents() -> NSCollectionLayoutSection{
     
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
     let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    
+    section.boundarySupplementaryItems = [sectionHeader]
     return section
 }
 
@@ -94,8 +96,11 @@ func drawTeams() -> NSCollectionLayoutSection{
     
     //create padding between groups
     section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 10, trailing: 0)
+   
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
     let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+    
+    section.boundarySupplementaryItems = [sectionHeader]
     return section
 }
 
@@ -144,6 +149,8 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
     
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+    
+
     return cell
 }
 

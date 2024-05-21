@@ -24,23 +24,23 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var secondTeamLabel: UILabel!
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setupCell()
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        setupCell()
-//    }
-//    
-//    private func setupCell() {
-//        // Customize the cell here
-//        contentView.layer.borderWidth = 1.0
-//
-//        contentView.layer.cornerRadius = 20.0 // Adjust the corner radius as needed
-//        contentView.layer.masksToBounds = true
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupCell()
+    }
+    
+    private func setupCell() {
+        // Customize the cell here
+        contentView.layer.borderWidth = 2.0
+
+        contentView.layer.cornerRadius = 20.0 // Adjust the corner radius as needed
+        contentView.layer.masksToBounds = true
+    }
 
 }
 
