@@ -6,9 +6,8 @@
 //
 
 import UIKit
-// import Kingfisher
+import Kingfisher
 import SafariServices
-
 
 class LeaguesTableViewCell: UITableViewCell {
 
@@ -18,26 +17,26 @@ class LeaguesTableViewCell: UITableViewCell {
      @IBOutlet weak var secondImageView: UIButton!
      @IBOutlet weak var labelText: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    func setUp (name: String , imageUrl: String,youTubeUrl: String)
+  
+    func setUp (name: String , imageUrl: String?)
     {
         labelText.text = name
-        youTubeLink = youTubeUrl
-       // setimage by url alamofire
-//        if let url = URL(string: url) {
-//            image.kf.setImage(with: url, placeholder: UIImage(named: "noImage"))
-        
-        
         // to make the photo circular and edddddddddddddddddddit in image attributes
-//        image.layer.masksToBounds = false
-//        image.layer.cornerRadius = image.frame.height/2
-//        image.clipsToBounds = true
-//
-//        }
+       
+        guard let imageUrl = imageUrl else {
+            legImageView.image =  UIImage(named: "logo")
+            return }
+        if let url = URL(string: imageUrl) {
+            legImageView.kf.setImage(with: url, placeholder: UIImage(named: "l"))
+        }
     }
+
+     override func layoutSubviews() {
+         super.layoutSubviews()
+         legImageView.layer.masksToBounds = false
+         legImageView.layer.cornerRadius = legImageView.frame.height / 2
+         legImageView.clipsToBounds = true
+     }
     
     
     @IBAction func youTubeButton(_ sender: UIButton) {

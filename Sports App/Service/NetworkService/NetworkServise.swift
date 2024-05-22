@@ -9,44 +9,47 @@ import Foundation
 import Alamofire
 
 class FetchDataFromNetwork {
-    /**
-     
-     private func fetchLatestNewsFromAPI(completion: @escaping ([New]?) -> Void) {
-         let url = "https://raw.githubusercontent.com/DevTides/NewsApi/master/news.json"
-         AF.request(url).responseData { (response: DataResponse<Data, AFError>) in
-             switch response.result {
-             case .success(let data):
+       
+     static func fetchLeg (sportName: String , completion: @escaping ([Leagues]?) -> Void) {
+            var url =  "https://apiv2.allsportsapi.com/\(sportName)/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+
+         AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
+          switch response.result {
+             case .success(let value):
                  do {
-                     let result = try JSONDecoder().decode([New].self, from: data)
-                     DispatchQueue.main.async {
-                         completion(result)
-                     }
+                     let result = try JSONDecoder().decode(LeaguesResponse.self, from: value)
+                    print ("the result is\(result)")
+                     completion(result.result)
                  } catch {
                      completion(nil)
                  }
              case .failure(let error):
-                 print("Error fetching data: \(error)")
                  completion(nil)
              }
          }
      }
-     
-     */
-    func fetchLeg (sportName : String){
+    
+    
+    
+    static func fetchTeamData (teamKey: Int ,sportName: String, completion: @escaping (TeamResponse?) -> Void) {
+        var url = "https://apiv2.allsportsapi.com/\(sportName)/?&met=Teams&teamId=\(teamKey)&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
-        AF.request("https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df").responseJSON { response in
-            switch response.result {
+        AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
+         switch response.result {
             case .success(let value):
-                if let json = value as? [String: Any] {
-                    print("view did load")
-
-                    print(json)
+                do {
+                    let result = try JSONDecoder().decode(TeamResponse.self, from: value)
+                   print ("the result is\(result)")
+                    completion(result)
+                } catch {
+                    print("Decoding error: \(error)")
+                    completion(nil)
                 }
             case .failure(let error):
-                print(error)
+                print("Error fetching data: \(error)")
+                completion(nil)
             }
         }
-        
     }
     
 
@@ -108,5 +111,6 @@ class FetchDataFromNetwork {
         }
     }
     
+
 }
     

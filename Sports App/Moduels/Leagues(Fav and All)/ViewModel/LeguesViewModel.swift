@@ -8,15 +8,19 @@
 import Foundation
 
 class LeguesViewModel {
-    
-    var AllLegues : [LeguesModel]?
-    
-    func getDataFromAPI() {
-        
+            
+        var bindResultToViewController : (()->()) = {}
+
+        var allLegues : [Leagues]? {
+            didSet {
+                bindResultToViewController()
+            }
+        }
+           
+        func getDataFromAPI(lowercaseSportName: String) {
+            FetchDataFromNetwork.fetchLeg(sportName: lowercaseSportName) { [weak self] legues in
+                self?.allLegues = legues
+            }
+        }
     }
-    
-    func getDataFromLocal (){
-        
-        
-    }
-}
+
