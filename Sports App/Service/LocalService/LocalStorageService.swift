@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import CoreData
 
 class LocalStorageService {
-    
-    
+//    
+//    static func getAllFavLeagues () ->[Leagues]{
+//        var localLeagues : [Leagues]
+//        
+//        
+//        
+//        return localLeagues
+//    }
     
 }

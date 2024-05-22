@@ -32,6 +32,7 @@ class FetchDataFromNetwork {
     
     
     static func fetchTeamData (teamKey: Int ,sportName: String, completion: @escaping (TeamResponse?) -> Void) {
+        print ("in fetch team")
         var url = "https://apiv2.allsportsapi.com/\(sportName)/?&met=Teams&teamId=\(teamKey)&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
         AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
