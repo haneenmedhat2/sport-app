@@ -28,6 +28,7 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
             sports(name:"Football", image:UIImage(named:"f")!),
             sports(name:"Basketball", image: UIImage(named:"bascket")!),
             sports(name:"Cricket", image: UIImage(named:"c")!),
+            sports(name: "Tennis", image: UIImage(named: "t")!),
             sports(name:"Hockey", image: UIImage(named:"h")!),
             sports(name:"Baseball", image: UIImage(named:"base")!),
             sports(name:"American Football", image: UIImage(named:"a")!)]

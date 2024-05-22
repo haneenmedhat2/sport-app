@@ -38,7 +38,9 @@
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="pjJ-ev-jEq" firstAttribute="top" secondItem="Vft-mR-fjz" secondAttribute="top" constant="10" id="7bo-B9-RpR"/>
                                     <constraint firstItem="pjJ-ev-jEq" firstAttribute="leading" secondItem="Vft-mR-fjz" secondAttribute="leading" constant="15" id="JGs-1z-QN2"/>
+                                    <constraint firstAttribute="bottom" secondItem="iDe-T2-Toa" secondAttribute="bottom" constant="10" id="ubM-vj-ZgT"/>
                                 </constraints>
                             </stackView>
                         </subviews>

@@ -8,7 +8,31 @@
 import UIKit
 import Reachability
 
-class TeamViewController: UIViewController {
+class TeamViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource {
+   
+    
+    @IBOutlet weak var teamLogo: UIImageView!
+    @IBOutlet weak var teamNameLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TeamDetailsTableViewCell
+        cell.playerInfoInCellLabel.text = "15"
+        cell.playerNameInCellLabel.text = "Mayar"
+        cell.playereImageInCell.image = UIImage(named: "t.jpg")
+        
+//
+//        let placeholderImage = UIImage(named: "load.jpg")
+//        cell.imageView?.kf.setImage(with: URL(string: movie.image), placeholder: placeholderImage)
+//        
+        return cell
+    }
+    
     
     var teamVM : TeamViewModel!
     var teamInfo  = TeamResponse(result: [TeamMemberAndInformation(team_name: "No Aviable data", team_logo:"logo", teamMember:[])])
@@ -22,7 +46,9 @@ class TeamViewController: UIViewController {
         newtworkIndicator!.center = view.center
         newtworkIndicator!.startAnimating()
         view.addSubview(newtworkIndicator!)
-        newtworkIndicator!.startAnimating()
+       
+        
+        // newtworkIndicator!.startAnimating()
         
         
        let reachability = try! Reachability()

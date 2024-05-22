@@ -9,10 +9,7 @@ import UIKit
 
 class AllSportsCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+
 
     @IBOutlet weak var AllSportsImage: UIImageView!
     
@@ -21,6 +18,17 @@ class AllSportsCollectionViewCell: UICollectionViewCell {
     func setUpCell (name : String , photo : UIImage){
         AllSportsText.text = name
         AllSportsImage.image = photo
+
+    }
+    
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        AllSportsImage.clipsToBounds = true
+        AllSportsImage.layer.cornerRadius = 10 
+
 
     }
     
