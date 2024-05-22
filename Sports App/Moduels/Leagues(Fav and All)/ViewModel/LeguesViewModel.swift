@@ -25,8 +25,8 @@ class LeguesViewModel {
         }
     
     
-//    func getAllFavLeagues() -> [Leagues] {
-//            return LocalStorageService.getAllFavLeagues()
-//        }
+    func getAllFavLeagues() -> [Leagues] {
+            return LocalStorageService.getAllFavLeagues()
+        }
     }
 

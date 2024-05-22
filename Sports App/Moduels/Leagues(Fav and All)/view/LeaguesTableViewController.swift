@@ -22,6 +22,11 @@ class LeaguesTableViewController: UITableViewController {
         
         leguesViewModel = LeguesViewModel()
         
+      // for test fetching from core
+        let newLeague = Leagues(league_name: "Premier League", league_logo: "load", league_key: 1, sportName: "football")
+        LocalStorageService.insertLeague(newLeague)
+      
+        
         newtworkIndicator = UIActivityIndicatorView (style: .large)
         newtworkIndicator!.center = view.center
         newtworkIndicator!.startAnimating()
@@ -64,7 +69,11 @@ class LeaguesTableViewController: UITableViewController {
                 }
             }
         } else  {
-           // leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
+            
+            print (" fetch from data")
+
+            leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
+
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()
         }
@@ -108,13 +117,13 @@ class LeaguesTableViewController: UITableViewController {
             print("\(selectedleague.league_key!)")
             print("\(selectedleague.league_name!)     the name of leagues")
             
-            // not tested before
-             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
-             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg")
-             // legaguesDetailsScreen.sportName = sportName
-           //  legaguesDetailsScreen.legKey = selectedleague.league_key
-             present(legaguesDetailsScreen,animated: true)
-            
+//            // not tested before
+//             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+//             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg")
+//             // legaguesDetailsScreen.sportName = sportName
+//           //  legaguesDetailsScreen.legKey = selectedleague.league_key
+//             present(legaguesDetailsScreen,animated: true)
+//            
         }else {
             print("Internet is off")
             showAlert (message:" Please Check your network to show the details of leagues")

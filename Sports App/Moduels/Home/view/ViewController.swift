@@ -61,7 +61,9 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
             if let sportDetailsVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
                 
                 sportDetailsVC.sportName = selectedSport.name
-                
+                // Set the modal presentation style to full screen
+                sportDetailsVC.modalPresentationStyle = .fullScreen
+                                        
                 self.present(sportDetailsVC, animated: true, completion: nil)
             }
     }
