@@ -11,7 +11,6 @@ import Reachability
 class LeaguesTableViewController: UITableViewController {
     
     var leaguesArray = [Leagues]()
-    var comeFromFav : Bool?
     var sportName: String?
     
     var leguesViewModel : LeguesViewModel?
@@ -64,9 +63,8 @@ class LeaguesTableViewController: UITableViewController {
                     }
                 }
             }
-        } else if comeFromFav ?? false {
-            //         leaguesArray = call local function   from LeguesViewModel from core data
-            
+        } else  {
+            leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()
         }
@@ -112,6 +110,7 @@ class LeaguesTableViewController: UITableViewController {
             
             //        let storyBoard = UIStoryboard(name: "", bundle: nil)
             //    let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "details")
+            //           legaguesDetailsScreen.sportName = sportName
             //            legaguesDetailsScreen.legKey = selectedleague.league_key)
             //        present(legaguesDetailsScreen,animated: true)
             
@@ -126,7 +125,7 @@ class LeaguesTableViewController: UITableViewController {
     
     // for future if i want to make delete here but first check if is come from fav make it aviable and effect data base
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//    if comeFromFav{
+//    if sportName .is empty{
         //        if editingStyle == .delete {
         //            let removedFavorite = favorites.remove(at: indexPath.row)
         //            let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -185,7 +185,6 @@
 				22BB79552BF6235300FE3C62 /* SceneDelegate.swift */,
 				22BB795F2BF6235A00FE3C62 /* Assets.xcassets */,
 				22BB79642BF6235A00FE3C62 /* Info.plist */,
-				22BB795C2BF6235300FE3C62 /* Sports_App.xcdatamodeld */,
 				22C1344B2BF957A600248E82 /* LeaguesCollectionViewController.swift */,
 			);
 			path = "Sports App";
@@ -351,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				7D0D61722BFC3506008EF69C /* LocalStorageService.swift */,
+				22BB795C2BF6235300FE3C62 /* Sports_App.xcdatamodeld */,
 			);
 			path = LocalService;
 			sourceTree = "<group>";

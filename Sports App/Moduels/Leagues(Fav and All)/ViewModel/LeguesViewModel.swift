@@ -11,6 +11,7 @@ class LeguesViewModel {
             
         var bindResultToViewController : (()->()) = {}
 
+    
         var allLegues : [Leagues]? {
             didSet {
                 bindResultToViewController()
@@ -21,6 +22,11 @@ class LeguesViewModel {
             FetchDataFromNetwork.fetchLeg(sportName: lowercaseSportName) { [weak self] legues in
                 self?.allLegues = legues
             }
+        }
+    
+    
+    func getAllFavLeagues() -> [Leagues] {
+            return LocalStorageService.getAllFavLeagues()
         }
     }
 
