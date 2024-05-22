@@ -12,6 +12,7 @@ struct Leagues: Codable {
     let league_name: String?
     let league_logo: String?
     let league_key : Int?
+    let sportName : String?
 }
 
 struct LeaguesResponse: Codable {

@@ -52,7 +52,7 @@ class TeamViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             //   teamVM.getTeamDataFromAPI(sportName: sportName, teamKey: teamKey)
 
             //fake data
-            teamVM.getTeamDataFromAPI(sportName: "football", teamKey: 7)
+            teamVM.getTeamDataFromAPI(sportName: "football", teamKey: 8)
                                    
                 teamVM?.bindResultToViewController = { [weak self] in
                  DispatchQueue.main.async {

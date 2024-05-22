@@ -64,7 +64,7 @@ class LeaguesTableViewController: UITableViewController {
                 }
             }
         } else  {
-            leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
+           // leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()
         }
@@ -108,11 +108,12 @@ class LeaguesTableViewController: UITableViewController {
             print("\(selectedleague.league_key!)")
             print("\(selectedleague.league_name!)     the name of leagues")
             
-            //        let storyBoard = UIStoryboard(name: "", bundle: nil)
-            //    let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "details")
-            //           legaguesDetailsScreen.sportName = sportName
-            //            legaguesDetailsScreen.legKey = selectedleague.league_key)
-            //        present(legaguesDetailsScreen,animated: true)
+            // not tested before
+             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg")
+             // legaguesDetailsScreen.sportName = sportName
+           //  legaguesDetailsScreen.legKey = selectedleague.league_key
+             present(legaguesDetailsScreen,animated: true)
             
         }else {
             print("Internet is off")

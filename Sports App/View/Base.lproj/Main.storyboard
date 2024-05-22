@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yb7-xW-pgm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dfl-uW-uY9">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -140,7 +140,7 @@
         <!--Team View Controller-->
         <scene sceneID="CEm-4b-Wzb">
             <objects>
-                <viewController storyboardIdentifier="TeamDetailsVC" id="dfl-uW-uY9" customClass="TeamViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Team" id="dfl-uW-uY9" customClass="TeamViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Icl-AR-eZ8">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,9 +282,9 @@
     </scenes>
     <resources>
         <image name="a" width="766" height="400"/>
-        <image name="homekit" catalog="system" width="128" height="104"/>
+        <image name="homekit" catalog="system" width="32" height="32"/>
         <image name="logo" width="500" height="520"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
