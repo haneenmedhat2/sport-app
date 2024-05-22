@@ -11,6 +11,8 @@ import Kingfisher
 private let reuseIdentifier = "Cell"
 
 class LeaguesCollectionViewController: UICollectionViewController {
+    var sportName :String = ""
+    var legKey : Int = 0
     
     let viewModel = UpComingViewModel()
 
@@ -60,7 +62,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
     
     private func fetchUpcomingEvents() {
         //sport: "cricket", leagueId: 733
-        viewModel.fetchUpcomingEvents(sport: "football", leagueId: 205) { result in
+        viewModel.fetchUpcomingEvents(sport: sportName, leagueId: legKey) { result in
                switch result {
                case .success(let events):
                    print("Fetched events: ")
@@ -69,7 +71,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                }
            }
         
-        viewModel.fetchLatestEvents(sport: "football", leagueId: 205) { result in
+        viewModel.fetchLatestEvents(sport: sportName, leagueId: legKey) { result in
                switch result {
                case .success(let events):
                    print("Fetched events: )")
@@ -78,7 +80,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                }
            }
         
-        viewModel.fetchTeams(sport: "football", leagueId: 205) { result in
+        viewModel.fetchTeams(sport: sportName, leagueId: legKey) { result in
                switch result {
                case .success(let events):
                    print("Fetched events: \(events)")
@@ -152,6 +154,7 @@ func drawTeams() -> NSCollectionLayoutSection{
     //create padding between groups
     section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 10, trailing: 0)
    
+    
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
     let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
     
@@ -280,6 +283,17 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
 }
 
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//             let storyboard = UIStoryboard(name: "Team", bundle: nil)
+//             
+//             guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
+//        
+//        teamVC.sportName = sportName
+//        teamVC.teamKey =legKey
+//
+//             self.present(teamVC, animated: true, completion: nil)
+  }
+    
 }
 
 extension LeaguesCollectionViewController {
