@@ -20,12 +20,13 @@ class LocalStorageService {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AllNews")
 
         do {
+            print ("inside bring the data")
             let results = try managedContext.fetch(fetchRequest)
             for result in results as! [NSManagedObject] {
                 let league_name = result.value(forKey: "league_name") as? String ?? ""
                 let league_logo = result.value(forKey: "league_logo") as? String ?? ""
                 let league_key = result.value(forKey: "desription") as? Int64 ?? 0
-                 print("add to news from local title\(result.value(forKey: "league_name") as? String ?? "")")
+                 print("retrive  from local title\(result.value(forKey: "league_name") as? String ?? "")")
                   let league = Leagues(league_name: league_name, league_logo: league_logo, league_key: league_key)
                 localLeagues.append(league)
             }
