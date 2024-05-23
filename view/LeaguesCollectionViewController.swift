@@ -12,6 +12,8 @@ class LeaguesCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
 
         let layout = UICollectionViewCompositionalLayout
         {sectionIndex,environment in
@@ -24,7 +26,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                 return self.drawTeams()
                 
             }
-      
+    
         }
         
         collectionView.setCollectionViewLayout(layout, animated:true)
@@ -35,26 +37,29 @@ class LeaguesCollectionViewController: UICollectionViewController {
         func drawUpComingEvents() -> NSCollectionLayoutSection{
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75), heightDimension: .absolute(230))
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .absolute(225))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8 )
+            group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15)
+            
             let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 0)
+            section.orthogonalScrollingBehavior = .continuous
             
-            //section.orthogonalScrollingBehavior = .continuous
-            
-            //create padding between groups
-            section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0)
             section.visibleItemsInvalidationHandler = { (items, offset, environment) in
                 items.forEach { item in
                     let distanceFromCenter = abs((item.frame.midX - offset.x) - environment.container.contentSize.width / 2.0)
                     let minScale: CGFloat = 0.8
-                    let maxScale: CGFloat = 1.2
+                    let maxScale: CGFloat = 1.0
                     let scale = max(maxScale - (distanceFromCenter / environment.container.contentSize.width), minScale)
                     item.transform = CGAffineTransform(scaleX: scale, y: scale)
                 }
             }
+
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             
-            
+            section.boundarySupplementaryItems = [sectionHeader]
             return section
         }
 
@@ -62,16 +67,19 @@ class LeaguesCollectionViewController: UICollectionViewController {
     func drawLatestComingEvents() -> NSCollectionLayoutSection{
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75), heightDimension: .absolute(230))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8 )
+        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
         
-        //section.orthogonalScrollingBehavior = .continuous
         
         //create padding between groups
-        section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0)
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
     
@@ -79,15 +87,19 @@ class LeaguesCollectionViewController: UICollectionViewController {
     func drawTeams() -> NSCollectionLayoutSection{
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.75), heightDimension: .absolute(230))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .absolute(170))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8 )
+        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 8 )
         let section = NSCollectionLayoutSection(group: group)
         
-        //section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .continuous
         
         //create padding between groups
-        section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 10, trailing: 0)
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
     
@@ -116,7 +128,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
         case 0:
             return 10
         case 1:
-            return 12
+            return 5
         default:
             return 15
 
@@ -136,8 +148,13 @@ class LeaguesCollectionViewController: UICollectionViewController {
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        
+        cell.layer.cornerRadius = 30 // Adjust the value to your preference
+        cell.layer.masksToBounds = true
         return cell
     }
+
+    
 
     // MARK: UICollectionViewDelegate
 
@@ -170,4 +187,26 @@ class LeaguesCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension LeaguesCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            fatalError("Unexpected element kind")
+        }
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderView.reuseIdentifier, for: indexPath) as! HeaderView
+        
+        // Configure header view
+        switch indexPath.section {
+        case 0:
+            headerView.configure(with: "Upcoming Events")
+        case 1:
+            headerView.configure(with: "Latest Events")
+        default:
+            headerView.configure(with: "Teams")
+        }
+        
+        return headerView
+    }
 }
