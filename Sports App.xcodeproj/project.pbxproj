@@ -215,16 +215,12 @@
 			path = "Sports AppUITests";
 			sourceTree = "<group>";
 		};
-		22BECD8D2BFD1C24003B3CC9 /* view model */ = {
-			isa = PBXGroup;
-			children = (
-				22BECD8E2BFD1C42003B3CC9 /* UpComingViewModel.swift */,
-			);
-			path = "view model";
 		7D0D616C2BFC2B9F008EF69C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				7D0D616D2BFC2BD6008EF69C /* TeamViewModel.swift */,
+                22BECD8E2BFD1C42003B3CC9 /* UpComingViewModel.swift */,
+
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
