@@ -49,11 +49,8 @@ class TeamViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         } else {
             
             // real after screen connect
-            //   teamVM.getTeamDataFromAPI(sportName: sportName, teamKey: teamKey)
-
-            //fake data
-            teamVM.getTeamDataFromAPI(sportName: sportName! , teamKey: teamKey!)
-                                   
+             teamVM.getTeamDataFromAPI(sportName: sportName!, teamKey: teamKey!)
+                     
                 teamVM?.bindResultToViewController = { [weak self] in
                  DispatchQueue.main.async {
                      self?.teamInfo = self?.teamVM!.teamDetails ?? TeamResponse(result: [TeamMemberAndInformation(team_name: "No Aviable data", team_logo:"logo", players: [])])

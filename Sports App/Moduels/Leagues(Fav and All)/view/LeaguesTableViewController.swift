@@ -119,10 +119,9 @@ class LeaguesTableViewController: UITableViewController {
             print("selectedleague= \(selectedleague.league_key!)")
             print("selectedleague= \(selectedleague.league_name!)")
             
-//            // not tested before
              let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
              let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
-            legaguesDetailsScreen.sportName = selectedleague.league_name!
+            legaguesDetailsScreen.sportName = sportName!.lowercased()
              legaguesDetailsScreen.legKey = selectedleague.league_key!
              present(legaguesDetailsScreen,animated: true)
 //            

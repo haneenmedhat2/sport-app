@@ -69,17 +69,17 @@ class LeaguesCollectionViewController: UICollectionViewController {
     
     
     // for test swifting only after should remove
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
-   
-           teamVC.sportName = sportName
-           teamVC.teamKey = legKey
-
-        self.present(teamVC, animated: true, completion: nil)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
+//   
+//           teamVC.sportName = sportName
+//           teamVC.teamKey = legKey
+//
+//        self.present(teamVC, animated: true, completion: nil)
+//    }
     
     
     
@@ -312,12 +312,13 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
 
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var teamSrlected = viewModel.teams[indexPath.row]
              let storyboard = UIStoryboard(name: "Main", bundle: nil)
              
              guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
         
-        teamVC.sportName = sportName
-        teamVC.teamKey = legKey
+                teamVC.sportName = sportName
+                teamVC.teamKey = teamSrlected.team_key
 
              self.present(teamVC, animated: true, completion: nil)
   }

@@ -79,6 +79,8 @@ class FetchDataFromNetwork {
     func fetchLatestEvents(sport:String,leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
         let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId))&from=2023-05-21&to=2024-05-21&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
+        
+        print("latest\(url)")
         AF.request(url).responseData { response in
             switch response.result {
             case .success(let data):
