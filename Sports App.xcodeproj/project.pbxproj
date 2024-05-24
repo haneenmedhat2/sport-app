@@ -36,6 +36,9 @@
 		7D61EF902BFA591500943157 /* AllSportsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D61EF8E2BFA591500943157 /* AllSportsCollectionViewCell.xib */; };
 		7D7F5D5A2BFB852500FBB559 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F5D592BFB852500FBB559 /* HomeViewModel.swift */; };
 		7D7F5D5C2BFB89E400FBB559 /* NetworkServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7F5D5B2BFB89E400FBB559 /* NetworkServise.swift */; };
+		7D8A34782C00C5E100D98A71 /* MethodsOfNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A34772C00C5E100D98A71 /* MethodsOfNetwork.swift */; };
+		7D8A347B2C00D11F00D98A71 /* MockMethodsOfNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A347A2C00D11F00D98A71 /* MockMethodsOfNetwork.swift */; };
+		7D8A347D2C00D19400D98A71 /* MockNetworkServicw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A347C2C00D19400D98A71 /* MockNetworkServicw.swift */; };
 		7D96360F2BFE524000797397 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D96360E2BFE524000797397 /* Utility.swift */; };
 		7D97E0AF2BF963C500E22F30 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D97E0AE2BF963C500E22F30 /* HomeCollectionViewCell.xib */; };
 		7D97E0B02BF963C500E22F30 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D97E0AD2BF963C500E22F30 /* HomeCollectionViewCell.swift */; };
@@ -102,6 +105,9 @@
 		7D61EF8E2BFA591500943157 /* AllSportsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllSportsCollectionViewCell.xib; sourceTree = "<group>"; };
 		7D7F5D592BFB852500FBB559 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7D7F5D5B2BFB89E400FBB559 /* NetworkServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServise.swift; sourceTree = "<group>"; };
+		7D8A34772C00C5E100D98A71 /* MethodsOfNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodsOfNetwork.swift; sourceTree = "<group>"; };
+		7D8A347A2C00D11F00D98A71 /* MockMethodsOfNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMethodsOfNetwork.swift; sourceTree = "<group>"; };
+		7D8A347C2C00D19400D98A71 /* MockNetworkServicw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkServicw.swift; sourceTree = "<group>"; };
 		7D96360E2BFE524000797397 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7D97E0AD2BF963C500E22F30 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D97E0AE2BF963C500E22F30 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -195,7 +201,6 @@
 				22BB79552BF6235300FE3C62 /* SceneDelegate.swift */,
 				22BB795F2BF6235A00FE3C62 /* Assets.xcassets */,
 				22BB79642BF6235A00FE3C62 /* Info.plist */,
-				22C1344B2BF957A600248E82 /* LeaguesCollectionViewController.swift */,
 			);
 			path = "Sports App";
 			sourceTree = "<group>";
@@ -203,7 +208,9 @@
 		22BB796C2BF6235B00FE3C62 /* Sports AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				7D8A34792C00D10300D98A71 /* Mock */,
 				22BB796D2BF6235B00FE3C62 /* Sports_AppTests.swift */,
+				7D8A34772C00C5E100D98A71 /* MethodsOfNetwork.swift */,
 			);
 			path = "Sports AppTests";
 			sourceTree = "<group>";
@@ -248,6 +255,15 @@
 				7D7F5D592BFB852500FBB559 /* HomeViewModel.swift */,
 			);
 			path = "view model";
+			sourceTree = "<group>";
+		};
+		7D8A34792C00D10300D98A71 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				7D8A347A2C00D11F00D98A71 /* MockMethodsOfNetwork.swift */,
+				7D8A347C2C00D19400D98A71 /* MockNetworkServicw.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		7D97E0A62BF92E4800E22F30 /* view */ = {
@@ -686,6 +702,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D8A34782C00C5E100D98A71 /* MethodsOfNetwork.swift in Sources */,
+				7D8A347B2C00D11F00D98A71 /* MockMethodsOfNetwork.swift in Sources */,
+				7D8A347D2C00D19400D98A71 /* MockNetworkServicw.swift in Sources */,
 				22BB796E2BF6235B00FE3C62 /* Sports_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,7 +790,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -834,7 +853,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

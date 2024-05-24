@@ -19,8 +19,12 @@ class LeguesViewModel {
         }
            
         func getDataFromAPI(lowercaseSportName: String) {
-            FetchDataFromNetwork.fetchLeg(sportName: lowercaseSportName) { [weak self] legues in
-                self?.allLegues = legues
+            FetchDataFromNetwork.fetchLeg(sportName: lowercaseSportName) { [weak self] legues , error in
+                if let error = error{
+                    print("error")}
+                else{
+                    self?.allLegues = legues
+                }
             }
         }
     

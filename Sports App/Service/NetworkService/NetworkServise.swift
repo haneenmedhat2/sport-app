@@ -10,28 +10,30 @@ import Alamofire
 
 class FetchDataFromNetwork {
        
-     static func fetchLeg (sportName: String , completion: @escaping ([Leagues]?) -> Void) {
+     static func fetchLeg (sportName: String , completion: @escaping ([Leagues]?,Error?) -> Void) {
             var url =  "https://apiv2.allsportsapi.com/\(sportName)/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
 
+         print("url of fetch leagues \(url)")
+         
          AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
           switch response.result {
              case .success(let value):
                  do {
                      let result = try JSONDecoder().decode(LeaguesResponse.self, from: value)
                     print ("the result is\(result)")
-                     completion(result.result)
+                     completion(result.result,nil)
                  } catch {
-                     completion(nil)
+                     completion(nil,error)
                  }
              case .failure(let error):
-                 completion(nil)
+                 completion(nil,error)
              }
          }
      }
     
     
     
-    static func fetchTeamData (teamKey: Int ,sportName: String, completion: @escaping (TeamResponse?) -> Void) {
+    static func fetchTeamData (teamKey: Int ,sportName: String, completion: @escaping (TeamResponse?,Error?) -> Void) {
         print ("in fetch team")
         var url = "https://apiv2.allsportsapi.com/\(sportName)/?&met=Teams&teamId=\(teamKey)&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
@@ -41,14 +43,12 @@ class FetchDataFromNetwork {
                 do {
                     let result = try JSONDecoder().decode(TeamResponse.self, from: value)
                    print ("the result is\(result)")
-                    completion(result)
+                    completion(result,nil)
                 } catch {
-                    print("Decoding error: \(error)")
-                    completion(nil)
+                    completion(nil,error)
                 }
             case .failure(let error):
-                print("Error fetching data: \(error)")
-                completion(nil)
+                completion(nil,error)
             }
         }
     }
@@ -57,6 +57,8 @@ class FetchDataFromNetwork {
     
     func fetchUpcomingEvents(sport:String,leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
         let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-01-18&to=2024-12-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+        
+        print("https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-01-18&to=2024-12-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df")
         
         AF.request(url).responseData { response in
             switch response.result {

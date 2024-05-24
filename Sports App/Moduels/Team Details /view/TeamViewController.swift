@@ -12,7 +12,7 @@ import Kingfisher
 class TeamViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource {
    
     var sportName : String?
-    var teamKey : String?
+    var teamKey : Int?
     
     
     @IBOutlet weak var teamLogo: UIImageView!
@@ -52,7 +52,7 @@ class TeamViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
             //   teamVM.getTeamDataFromAPI(sportName: sportName, teamKey: teamKey)
 
             //fake data
-            teamVM.getTeamDataFromAPI(sportName: "football", teamKey: 8)
+            teamVM.getTeamDataFromAPI(sportName: sportName! , teamKey: teamKey!)
                                    
                 teamVM?.bindResultToViewController = { [weak self] in
                  DispatchQueue.main.async {

@@ -14,11 +14,13 @@ class LeaguesCollectionViewController: UICollectionViewController {
     var sportName :String = ""
     var legKey : Int = 0
     
+    
     let viewModel = UpComingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print ("values of seportname \(sportName) and key \(legKey) in LeaguesCollectionViewController")
+
         collectionView.register(UINib(nibName: "EmptyStateCell", bundle: nil), forCellWithReuseIdentifier: "emptyStateCell")
 
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
@@ -60,6 +62,32 @@ class LeaguesCollectionViewController: UICollectionViewController {
 
     }
     
+    
+    
+    
+    
+    
+    
+    // for test swifting only after should remove
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
+   
+           teamVC.sportName = sportName
+           teamVC.teamKey = legKey
+
+        self.present(teamVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     private func fetchUpcomingEvents() {
         //sport: "cricket", leagueId: 733
         viewModel.fetchUpcomingEvents(sport: sportName, leagueId: legKey) { result in
@@ -67,7 +95,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                case .success(let events):
                    print("Fetched events: ")
                case .failure(let error):
-                   print("Error fetching events: ")
+                   print("Error fetching  fetchUpcomingEvents events:\(error) ")
                }
            }
         
@@ -76,7 +104,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                case .success(let events):
                    print("Fetched events: )")
                case .failure(let error):
-                   print("Error fetching events: ")
+                   print("Error fetching fetchLatestEvents events: \(error)")
                }
            }
         
@@ -85,7 +113,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                case .success(let events):
                    print("Fetched events: \(events)")
                case .failure(let error):
-                   print("Error fetching events: \(error)")
+                   print("Error fetching  fetchTeams events: \(error)")
                }
            }
        }
@@ -284,14 +312,14 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
 
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//             let storyboard = UIStoryboard(name: "Team", bundle: nil)
-//             
-//             guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
-//        
-//        teamVC.sportName = sportName
-//        teamVC.teamKey =legKey
-//
-//             self.present(teamVC, animated: true, completion: nil)
+             let storyboard = UIStoryboard(name: "Main", bundle: nil)
+             
+             guard let teamVC = storyboard.instantiateViewController(withIdentifier: "Team") as? TeamViewController else { return }
+        
+        teamVC.sportName = sportName
+        teamVC.teamKey = legKey
+
+             self.present(teamVC, animated: true, completion: nil)
   }
     
 }
