@@ -1,0 +1,13 @@
+x
+≈ç≈
+*.xcuserstate
+*.xcuserstate
+*.xcuserstate
+Sports App.xcodeproj/project.xcworkspace/xcuserdata/mayar.xcuserdatad/UserInterfaceState.xcuserstate
+# Xcode
+.DS_Store
+*.xcuserstate
+
+# Ignore user-specific Xcode settings
+**/xcuserdata/
+
