@@ -66,7 +66,7 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
                 
                 sportDetailsVC.sportName = selectedSport.name
                 // Set the modal presentation style to full screen
-                sportDetailsVC.modalPresentationStyle = .fullScreen
+              //  sportDetailsVC.modalPresentationStyle = .fullScreen
                                         
                 self.present(sportDetailsVC, animated: true, completion: nil)
             }

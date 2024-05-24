@@ -23,9 +23,9 @@ class LeaguesTableViewController: UITableViewController {
         leguesViewModel = LeguesViewModel()
         
       // for test fetching from core
-        let newLeague = Leagues(league_name: "Premier League", league_logo: "load", league_key: 1, sportName: "football")
-        LocalStorageService.insertLeague(newLeague)
-      
+//        let newLeague = Leagues(league_name: "Premier League", league_logo: "load", league_key: 1, sportName: "football")
+//        LocalStorageService.insertLeague(newLeague)
+//      
         
         newtworkIndicator = UIActivityIndicatorView (style: .large)
         newtworkIndicator!.center = view.center
@@ -113,16 +113,18 @@ class LeaguesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let reachability = try! Reachability()
         if reachability.connection != .unavailable {
+            
             let selectedleague = leaguesArray[indexPath.row]
-            print("\(selectedleague.league_key!)")
-            print("\(selectedleague.league_name!)     the name of leagues")
+            
+            print("selectedleague= \(selectedleague.league_key!)")
+            print("selectedleague= \(selectedleague.league_name!)")
             
 //            // not tested before
-//             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
-//             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg")
-//             // legaguesDetailsScreen.sportName = sportName
-//           //  legaguesDetailsScreen.legKey = selectedleague.league_key
-//             present(legaguesDetailsScreen,animated: true)
+             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
+            legaguesDetailsScreen.sportName = selectedleague.league_name!
+             legaguesDetailsScreen.legKey = selectedleague.league_key!
+             present(legaguesDetailsScreen,animated: true)
 //            
         }else {
             print("Internet is off")
