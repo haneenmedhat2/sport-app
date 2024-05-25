@@ -11,12 +11,16 @@ import XCTest
 
 final class MethodsOfNetwork: XCTestCase {
 
-    
+    var networkService : FetchDataFromNetwork?
+    let sportName = "football"
+    let leagueId = 205
     
     override func setUpWithError() throws {
+        networkService = FetchDataFromNetwork()
     }
 
     override func tearDownWithError() throws {
+        networkService = nil
     }
 
     
@@ -52,6 +56,55 @@ final class MethodsOfNetwork: XCTestCase {
     }
     
     
+    
+    func testFetchUpcomingEvents(){
+
+        let expectation = expectation(description: "Wait for data coming from api")
+        networkService?.fetchUpcomingEvents(sport: sportName, leaguId: leagueId) { result in
+            switch result{
+            case .success(let result):
+                XCTAssertNotNil(result, "Not empty result")
+            case .failure(let error):
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2)
+    }
+    
+
+    
+    func testFetchLatestEvents(){
+        let expectation = expectation(description: "Wait for data coming from api")
+        networkService?.fetchLatestEvents(sport: sportName, leaguId:leagueId ){ result in
+            switch result{
+            case .success(let result):
+                XCTAssertNotNil(result, "Not empty result")
+            case .failure(let error):
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 4)
+    }
+    
+    
+    func testFetchTeams(){
+        let expectation = expectation(description: "Wait for data coming from api")
+        networkService?.fetchTeams(sport:sportName, leaguId: leagueId){ result in
+            switch result{
+            case .success(let result):
+                XCTAssertNotNil(result, "Not empty result")
+            case .failure(let error):
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2)
+    }
+    
+    
+
     
 
 }
