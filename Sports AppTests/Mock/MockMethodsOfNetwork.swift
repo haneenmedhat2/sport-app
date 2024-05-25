@@ -19,9 +19,8 @@ final class MockMethodsOfNetwork: XCTestCase {
     override func tearDownWithError() throws {
     }
     
-    
     // leagues
-    func testFetchDataFailure() {
+    func testFetchAllLeagus() {
         
                mockService.fetchDataFromJsonAllLeagues { leagues, error in
                    XCTAssertNil(error, "Error should be nil")
@@ -30,8 +29,14 @@ final class MockMethodsOfNetwork: XCTestCase {
                    XCTAssertEqual(leagues?.first?.league_name, "UEFA Europa League", "First league name should be 'UEFA Europa League'")
                }
            }
-    
-    
+    func testFetchTeamDetails() {
+        
+               mockService.fetchDataFromJsonTeams { team, error in
+                   XCTAssertNil(error, "Error should be nil")
+                   XCTAssertNotNil(team, "not nil")
+                   XCTAssertEqual(team?.result.first?.team_name , "Türkiye")
+               }
+           }
     
     }
 
