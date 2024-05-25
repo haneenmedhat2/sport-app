@@ -9,6 +9,7 @@ import Foundation
 
 class TeamViewModel {
     
+    
     var bindResultToViewController : (()->()) = {}
     
     var teamDetails : TeamResponse? {

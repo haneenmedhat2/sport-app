@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1198B415449C19A5D479E56F /* Pods_Sports_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA666420F0B7936BD9287206 /* Pods_Sports_App.framework */; };
+		221480DD2C01F8F400BD91F2 /* MockEventNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221480DC2C01F8F400BD91F2 /* MockEventNetworkService.swift */; };
+		221480DF2C02012400BD91F2 /* TestMockEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221480DE2C02012400BD91F2 /* TestMockEvents.swift */; };
 		2237BC4B2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237BC4A2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift */; };
 		2237BC4D2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237BC4C2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift */; };
 		2237BC4F2BF9754300C2DEBC /* TeamsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237BC4E2BF9754300C2DEBC /* TeamsCollectionViewCell.swift */; };
@@ -72,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		0CFBEC79265B08F788D48C27 /* Pods-Sports App-Sports AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports App-Sports AppUITests.debug.xcconfig"; path = "Target Support Files/Pods-Sports App-Sports AppUITests/Pods-Sports App-Sports AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		221480DC2C01F8F400BD91F2 /* MockEventNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEventNetworkService.swift; sourceTree = "<group>"; };
+		221480DE2C02012400BD91F2 /* TestMockEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestMockEvents.swift; path = "/Users/haneenmedhat/Desktop/sport-app/Sports AppTests/Mock/TestMockEvents.swift"; sourceTree = "<absolute>"; };
 		2237BC4A2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingCollectionViewCell.swift; path = "Leagues Details/view/UpcomingCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		2237BC4C2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LatestEventsCollectionViewCell.swift; path = "Leagues Details/view/LatestEventsCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		2237BC4E2BF9754300C2DEBC /* TeamsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamsCollectionViewCell.swift; path = "Leagues Details/view/TeamsCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -262,6 +266,8 @@
 			children = (
 				7D8A347A2C00D11F00D98A71 /* MockMethodsOfNetwork.swift */,
 				7D8A347C2C00D19400D98A71 /* MockNetworkServicw.swift */,
+				221480DC2C01F8F400BD91F2 /* MockEventNetworkService.swift */,
+				221480DE2C02012400BD91F2 /* TestMockEvents.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -706,6 +712,8 @@
 				7D8A347B2C00D11F00D98A71 /* MockMethodsOfNetwork.swift in Sources */,
 				7D8A347D2C00D19400D98A71 /* MockNetworkServicw.swift in Sources */,
 				22BB796E2BF6235B00FE3C62 /* Sports_AppTests.swift in Sources */,
+				221480DF2C02012400BD91F2 /* TestMockEvents.swift in Sources */,
+				221480DD2C01F8F400BD91F2 /* MockEventNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
