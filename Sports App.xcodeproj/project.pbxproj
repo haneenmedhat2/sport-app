@@ -50,6 +50,7 @@
 		7D97E0BE2BF98BC700E22F30 /* LeguesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D97E0BD2BF98BC700E22F30 /* LeguesModel.swift */; };
 		7DA603AB2BFD7AB6001CE667 /* TeamDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA603AA2BFD7AB6001CE667 /* TeamDetailsTableViewCell.swift */; };
 		7DA81E562BF62D1500D8BDDD /* SecondStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */; };
+		7DB73AC42C024F4200B0E2D4 /* LocalStorageServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB73AC32C024F4200B0E2D4 /* LocalStorageServiceTest.swift */; };
 		F4F0ADD6EA44A9F594E8B97C /* Pods_Sports_App_Sports_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B009A87D0FDBA4CDFAAEC34 /* Pods_Sports_App_Sports_AppUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		7D97E0BD2BF98BC700E22F30 /* LeguesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeguesModel.swift; sourceTree = "<group>"; };
 		7DA603AA2BFD7AB6001CE667 /* TeamDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		7DA81E552BF62D1500D8BDDD /* SecondStoryBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryBoard.storyboard; sourceTree = "<group>"; };
+		7DB73AC32C024F4200B0E2D4 /* LocalStorageServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServiceTest.swift; sourceTree = "<group>"; };
 		8BDBCBB1ADF1200C1EA9F85F /* Pods-Sports AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports AppTests.debug.xcconfig"; path = "Target Support Files/Pods-Sports AppTests/Pods-Sports AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9CB45D482FC5AEC7DCDAE1C2 /* Pods-Sports App-Sports AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports App-Sports AppUITests.release.xcconfig"; path = "Target Support Files/Pods-Sports App-Sports AppUITests/Pods-Sports App-Sports AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A36630EEC581B41E123B83C5 /* Pods-Sports App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports App.release.xcconfig"; path = "Target Support Files/Pods-Sports App/Pods-Sports App.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				7D8A34792C00D10300D98A71 /* Mock */,
 				22BB796D2BF6235B00FE3C62 /* Sports_AppTests.swift */,
 				7D8A34772C00C5E100D98A71 /* MethodsOfNetwork.swift */,
+				7DB73AC32C024F4200B0E2D4 /* LocalStorageServiceTest.swift */,
 			);
 			path = "Sports AppTests";
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D8A34782C00C5E100D98A71 /* MethodsOfNetwork.swift in Sources */,
+				7DB73AC42C024F4200B0E2D4 /* LocalStorageServiceTest.swift in Sources */,
 				7D8A347B2C00D11F00D98A71 /* MockMethodsOfNetwork.swift in Sources */,
 				7D8A347D2C00D19400D98A71 /* MockNetworkServicw.swift in Sources */,
 				22BB796E2BF6235B00FE3C62 /* Sports_AppTests.swift in Sources */,

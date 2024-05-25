@@ -60,6 +60,17 @@ class LocalStorageService {
       }
     
     
+    static func clearAllFavLeagues() throws {
+           let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FavLeagues")
+           let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+           do {
+               try UtilityObject.managedContext.execute(deleteRequest)
+           } catch {
+               print("Failed to clear existing data: \(error)")
+               throw error
+           }
+       }
     
     
 }
