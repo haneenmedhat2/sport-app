@@ -34,21 +34,20 @@ extension MockNetworkService{
                 case responseError
             }
     
-    func fetchDataFromJson(compiltionHandler: @escaping ([Leagues]?, Error?) -> Void){
+    func fetchDataFromJsonAllLeagues(compiltionHandler: @escaping ([Leagues]?, Error?) -> Void){
                 do{
                     let data = try JSONSerialization.data(withJSONObject: fakeJSONObj)
                     let  response  = try JSONDecoder().decode(LeaguesResponse.self, from: data)
                     result = response.result
-                    print ("resulr after response \(result)")
                     
-                }catch{
-                    print(error.localizedDescription)
-                }
                 if shouldReturnError{
                     compiltionHandler(nil, responseWithError.responseError)
                     
                 }else{
                     compiltionHandler(result, nil)
-                }               
+                }    
+                }catch{
+                    print(error.localizedDescription)
+                }
        }
 }
