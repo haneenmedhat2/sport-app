@@ -20,9 +20,9 @@ class LeaguesCollectionViewController: UICollectionViewController {
     
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         
-        //        let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
-        //        let legaguesScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesTableViewController
-        //        present(legaguesScreen,animated: true)
+                let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+                let legaguesScreen = storyBoard.instantiateViewController(withIdentifier: "LeaguesTableViewController") as! LeaguesTableViewController
+                present(legaguesScreen,animated: true)
         
     }
     @IBAction func addToFav(_ sender: UIBarButtonItem) {
