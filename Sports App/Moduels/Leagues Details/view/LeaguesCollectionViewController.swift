@@ -92,8 +92,20 @@ class LeaguesCollectionViewController: UICollectionViewController {
         let s = UIStoryboard(name: "Main", bundle: nil)
         let legaguesScreen = s.instantiateViewController(withIdentifier: "LeaguesTableViewController") as! LeaguesTableViewController
         legaguesScreen.sportName = sportName
+        legaguesScreen.modalPresentationStyle = .fullScreen
+
         present(legaguesScreen,animated: true)
-        
+       
+       //  it dosent not work
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if let leaguesScreen = storyboard.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
+//            leaguesScreen.sportName = sportName
+//            
+//            if let navigationController = self.navigationController {
+//                navigationController.pushViewController(leaguesScreen, animated: true)
+//            }
+//        }
+
     }
     
     
