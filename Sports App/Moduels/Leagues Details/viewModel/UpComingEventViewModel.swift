@@ -91,6 +91,11 @@ class UpComingViewModel{
         }
     }
     
+    
+    func getLocalData() -> [Leagues]{
+       return  LocalStorageService.getAllFavLeagues()
+    }
+
 }
     
     
