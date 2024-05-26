@@ -14,7 +14,7 @@ class LeaguesTableViewController: UITableViewController {
     var sportName: String?
     
     var leguesViewModel : LeguesViewModel?
-        
+    
     var newtworkIndicator : UIActivityIndicatorView?
     
     override func viewDidLoad() {
@@ -22,10 +22,10 @@ class LeaguesTableViewController: UITableViewController {
         
         leguesViewModel = LeguesViewModel()
         
-      // for test fetching from core
-//        let newLeague = Leagues(league_name: "Premier League", league_logo: "load", league_key: 1, sportName: "football")
-//        LocalStorageService.insertLeague(newLeague)
-//      
+        // for test fetching from core
+        //        let newLeague = Leagues(league_name: "Premier League", league_logo: "load", league_key: 1, sportName: "football")
+        //        LocalStorageService.insertLeague(newLeague)
+        //
         
         newtworkIndicator = UIActivityIndicatorView (style: .large)
         newtworkIndicator!.center = view.center
@@ -49,7 +49,7 @@ class LeaguesTableViewController: UITableViewController {
                 
             }else {
                 let lowercaseSportName = sportName.lowercased()
-
+                
                 leguesViewModel?.getDataFromAPI(lowercaseSportName: lowercaseSportName)
                 
                 leguesViewModel?.bindResultToViewController = { [weak self] in
@@ -71,9 +71,9 @@ class LeaguesTableViewController: UITableViewController {
         } else  {
             
             print (" fetch from data")
-
+            
             leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
-
+            
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()
         }
@@ -119,38 +119,38 @@ class LeaguesTableViewController: UITableViewController {
             print("selectedleague= \(selectedleague.league_key!)")
             print("selectedleague= \(selectedleague.league_name!)")
             
-             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
-             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
+            let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
+            let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
             legaguesDetailsScreen.sportName = sportName!.lowercased()
-             legaguesDetailsScreen.legKey = selectedleague.league_key!
-             present(legaguesDetailsScreen,animated: true)
-//            
+            legaguesDetailsScreen.legKey = selectedleague.league_key!
+            legaguesDetailsScreen.modalPresentationStyle = .fullScreen
+
+            present(legaguesDetailsScreen,animated: true)
+            
+            //
         }else {
             print("Internet is off")
             showAlert (message:" Please Check your network to show the details of leagues")
         }
     }
     
-}
     
     
     // for future if i want to make delete here but first check if is come from fav make it aviable and effect data base
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//    if sportName .is empty{
-        //        if editingStyle == .delete {
-        //            let removedFavorite = favorites.remove(at: indexPath.row)
-        //            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //            let managedContext = appDelegate.persistentContainer.viewContext
-        //            managedContext.delete(removedFavorite)
-        //            do {
-        //                try managedContext.save()
-        //            } catch let error as NSError {
-        //                print("Could not save deletion. \(error), \(error.userInfo)")
-        //            }
-        //            tableView.deleteRows(at: [indexPath], with: .fade)
-        //        }
-        //    }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let selectedleague = leaguesArray[indexPath.row]
+        if editingStyle == .delete {
+            
+            LocalStorageService.deleteLeague(leagueKey: selectedleague.league_key!)
+            
+            leaguesArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
+    }
+    
+}
 
 
 

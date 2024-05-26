@@ -13,6 +13,8 @@
 		2237BC4B2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237BC4A2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift */; };
 		2237BC4D2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237BC4C2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift */; };
 		2237BC4F2BF9754300C2DEBC /* TeamsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237BC4E2BF9754300C2DEBC /* TeamsCollectionViewCell.swift */; };
+		225791592C02605500672F98 /* TestMockEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225791572C02602E00672F98 /* TestMockEvents.swift */; };
+		22913F872C03C92A005E2A16 /* NavigationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22913F862C03C92A005E2A16 /* NavigationCollectionViewCell.swift */; };
 		22A7798C2BFCD6FE007DA1E1 /* LeaguesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A7798B2BFCD6FE007DA1E1 /* LeaguesCollectionViewController.swift */; };
 		22A9CC4C2BFBE2A700BD2B06 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9CC4B2BFBE2A700BD2B06 /* HeaderView.swift */; };
 		22BB79542BF6235300FE3C62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB79532BF6235300FE3C62 /* AppDelegate.swift */; };
@@ -79,6 +81,8 @@
 		2237BC4A2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingCollectionViewCell.swift; path = "Leagues Details/view/UpcomingCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		2237BC4C2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LatestEventsCollectionViewCell.swift; path = "Leagues Details/view/LatestEventsCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		2237BC4E2BF9754300C2DEBC /* TeamsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamsCollectionViewCell.swift; path = "Leagues Details/view/TeamsCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		225791572C02602E00672F98 /* TestMockEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestMockEvents.swift; path = "/Users/haneenmedhat/Desktop/sport-app/Sports App/Moduels/Leagues Details/view/TestMockEvents.swift"; sourceTree = "<absolute>"; };
+		22913F862C03C92A005E2A16 /* NavigationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCollectionViewCell.swift; sourceTree = "<group>"; };
 		22A7798B2BFCD6FE007DA1E1 /* LeaguesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesCollectionViewController.swift; sourceTree = "<group>"; };
 		22A9CC4B2BFBE2A700BD2B06 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = view/HeaderView.swift; sourceTree = SOURCE_ROOT; };
 		22BB79502BF6235300FE3C62 /* Sports App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sports App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +171,7 @@
 				2237BC4C2BF9746900C2DEBC /* LatestEventsCollectionViewCell.swift */,
 				2237BC4E2BF9754300C2DEBC /* TeamsCollectionViewCell.swift */,
 				22A9CC4B2BFBE2A700BD2B06 /* HeaderView.swift */,
+				22913F862C03C92A005E2A16 /* NavigationCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 		7D8A34792C00D10300D98A71 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				225791572C02602E00672F98 /* TestMockEvents.swift */,
 				7D8A347A2C00D11F00D98A71 /* MockMethodsOfNetwork.swift */,
 				7D8A347C2C00D19400D98A71 /* MockNetworkServicw.swift */,
 				221480DC2C01F8F400BD91F2 /* MockEventNetworkService.swift */,
@@ -674,6 +680,7 @@
 			files = (
 				22BECD912BFD4DFF003B3CC9 /* Teams.swift in Sources */,
 				7D7F5D5A2BFB852500FBB559 /* HomeViewModel.swift in Sources */,
+				22913F872C03C92A005E2A16 /* NavigationCollectionViewCell.swift in Sources */,
 				7D0D61712BFC2CDE008EF69C /* TeamViewController.swift in Sources */,
 				7DA603AB2BFD7AB6001CE667 /* TeamDetailsTableViewCell.swift in Sources */,
 				2237BC4B2BF9721400C2DEBC /* UpcomingCollectionViewCell.swift in Sources */,
@@ -708,6 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				225791592C02605500672F98 /* TestMockEvents.swift in Sources */,
 				7D8A34782C00C5E100D98A71 /* MethodsOfNetwork.swift in Sources */,
 				7D8A347B2C00D11F00D98A71 /* MockMethodsOfNetwork.swift in Sources */,
 				7D8A347D2C00D19400D98A71 /* MockNetworkServicw.swift in Sources */,

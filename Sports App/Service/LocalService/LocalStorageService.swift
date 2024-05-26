@@ -48,7 +48,7 @@ class LocalStorageService {
 
           newLeague.setValue(league.league_name, forKey: "league_name")
           newLeague.setValue(league.league_logo, forKey: "league_logo")
-          newLeague.setValue(Int8(league.league_key!), forKey: "league_key")
+          newLeague.setValue(Int16(league.league_key!), forKey: "league_key")
           newLeague.setValue(league.sportName, forKey: "sportName")
 
           do {
@@ -59,7 +59,24 @@ class LocalStorageService {
           }
       }
     
-    
+    static func deleteLeague( leagueKey: Int) {
+         let context = UtilityObject.managedContext
+         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavLeagues")
+         fetchRequest.predicate = NSPredicate(format: "league_key == %d", leagueKey)
+
+         do {
+             let results = try context.fetch(fetchRequest)
+             if let leagueToDelete = results.first as? NSManagedObject {
+                 context.delete(leagueToDelete)
+                 try context.save()
+                 print("Successfully deleted league with key \(leagueKey)")
+             } else {
+                 print("No league found with key \(leagueKey)")
+             }
+         } catch {
+             print("Failed to delete league: \(error)")
+         }
+     }
     
     
 }

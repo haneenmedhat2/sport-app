@@ -2,8 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o7E-kf-avj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -96,14 +96,56 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="VKI-aK-eVB" customClass="NavigationCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
+                                <rect key="frame" x="11" y="0.0" width="392" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HEM-c5-9as">
+                                    <rect key="frame" x="0.0" y="0.0" width="392" height="47"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yA-ui-qCu">
+                                            <rect key="frame" x="-8" y="0.0" width="400" height="44"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <items>
+                                                <navigationItem title="League Details" id="Kff-T8-YsE">
+                                                    <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="Fa1-sp-voT">
+                                                        <color key="tintColor" name="AccentColor"/>
+                                                        <connections>
+                                                            <action selector="goBack:" destination="o7E-kf-avj" id="6yP-5i-e7M"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                    <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="1d7-hz-MwR">
+                                                        <color key="tintColor" name="AccentColor"/>
+                                                        <connections>
+                                                            <action selector="addToFav:" destination="o7E-kf-avj" id="aaD-9N-Sy7"/>
+                                                        </connections>
+                                                    </barButtonItem>
+                                                </navigationItem>
+                                            </items>
+                                        </navigationBar>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="2yA-ui-qCu" secondAttribute="trailing" id="3gc-gK-Hx0"/>
+                                        <constraint firstItem="2yA-ui-qCu" firstAttribute="height" secondItem="HEM-c5-9as" secondAttribute="height" multiplier="0.93617" id="X9L-yi-Q9w"/>
+                                        <constraint firstItem="2yA-ui-qCu" firstAttribute="width" secondItem="HEM-c5-9as" secondAttribute="width" multiplier="1.02041" id="gRf-lJ-hMh"/>
+                                        <constraint firstAttribute="bottom" secondItem="2yA-ui-qCu" secondAttribute="bottom" constant="3" id="tOw-if-JK3"/>
+                                        <constraint firstItem="2yA-ui-qCu" firstAttribute="leading" secondItem="HEM-c5-9as" secondAttribute="leading" constant="-8" id="yn3-tG-GSh"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="392" height="47"/>
+                                <connections>
+                                    <outlet property="favBtn" destination="1d7-hz-MwR" id="wlK-ee-KKx"/>
+                                </connections>
+                            </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="upcoming" id="XcM-wx-T8k" customClass="UpcomingCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="0.0" width="393" height="169"/>
+                                <rect key="frame" x="10.5" y="57" width="393" height="169"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3aJ-Be-qdf">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="169"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Egyption League" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dig-sf-aq1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Egyption League" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dig-sf-aq1">
                                             <rect key="frame" x="126.5" y="20" width="140" height="39.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <nil key="textColor"/>
@@ -178,7 +220,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="latestEvent" id="Tc3-NM-z37" customClass="LatestEventsCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
-                                <rect key="frame" x="10.5" y="179" width="393" height="128"/>
+                                <rect key="frame" x="10.5" y="236" width="393" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oEj-09-1HI">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
@@ -241,7 +283,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teams" id="q75-dt-Erj" customClass="TeamsCollectionViewCell" customModule="Sports_App" customModuleProvider="target">
-                                <rect key="frame" x="124.5" y="317" width="165" height="155"/>
+                                <rect key="frame" x="124.5" y="374" width="165" height="155"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WxZ-xo-ggf">
                                     <rect key="frame" x="0.0" y="0.0" width="165" height="155"/>
@@ -294,7 +336,12 @@
     </scenes>
     <resources>
         <image name="ahly" width="239" height="300"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="z" width="1024" height="1024"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
