@@ -137,13 +137,13 @@ class LeaguesTableViewController: UITableViewController {
            return sportName == nil
        }
     
-    // for future if i want to make delete here but first check if is come from fav make it aviable and effect data base
+   
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         let selectedleague = leaguesArray[indexPath.row]
         if editingStyle == .delete {
             
-            LocalStorageService.deleteLeague(leagueKey: selectedleague.league_key!)
+            leguesViewModel?.deleteLeague(leagueKey: selectedleague.league_key!)
             
             leaguesArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)

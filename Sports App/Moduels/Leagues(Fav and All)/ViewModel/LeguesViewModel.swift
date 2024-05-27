@@ -32,5 +32,11 @@ class LeguesViewModel {
     func getAllFavLeagues() -> [Leagues] {
             return LocalStorageService.getAllFavLeagues()
         }
+    
+    
+    func deleteLeague(leagueKey: Int) {
+        LocalStorageService.deleteLeague(leagueKey: leagueKey)
     }
+    
+}
 
