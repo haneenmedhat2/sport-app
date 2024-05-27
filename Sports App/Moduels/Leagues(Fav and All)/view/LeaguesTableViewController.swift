@@ -111,6 +111,7 @@ class LeaguesTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let reachability = try! Reachability()
         if reachability.connection != .unavailable {
             
@@ -121,13 +122,24 @@ class LeaguesTableViewController: UITableViewController {
             
             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
-            legaguesDetailsScreen.sportName = sportName!.lowercased()
-            legaguesDetailsScreen.legKey = selectedleague.league_key!
+            
+            if let sportName = sportName {
+                
+                legaguesDetailsScreen.sportName = sportName.lowercased()
+                legaguesDetailsScreen.legKey = selectedleague.league_key!
+                
+            }else {
+                
+                legaguesDetailsScreen.sportName = selectedleague.sportName!
+                legaguesDetailsScreen.legKey = selectedleague.league_key!
+               
+            }
+            
             legaguesDetailsScreen.modalPresentationStyle = .fullScreen
 
             present(legaguesDetailsScreen,animated: true)
             
-            //
+            
         }else {
             print("Internet is off")
             showAlert (message:" Please Check your network to show the details of leagues")
