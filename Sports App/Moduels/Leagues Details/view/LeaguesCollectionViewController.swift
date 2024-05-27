@@ -256,14 +256,12 @@ func drawLatestComingEvents() -> NSCollectionLayoutSection{
 func drawTeams() -> NSCollectionLayoutSection{
     let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .absolute(170))
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.55), heightDimension: .absolute(170))
     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
     group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 8 )
     let section = NSCollectionLayoutSection(group: group)
     
     section.orthogonalScrollingBehavior = .continuous
-    
-    //create padding between groups
     section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 10, trailing: 0)
    
     
@@ -335,8 +333,20 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
             cellIdentifier = "upcoming"
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UpcomingCollectionViewCell
             
+  
+            
+            
             let obj = viewModel.upcomingEvents[indexPath.row]
-            cell.dateLabel.text = obj.event_date
+            let dateString = obj.event_date ?? "2024-6-1"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: dateString) {
+                dateFormatter.dateFormat = "dd MMM"
+                let formattedDate = dateFormatter.string(from: date  )
+                cell.dateLabel.text = formattedDate
+            }else{
+                print("nil date")
+            }
             cell.timeLabel.text = obj.event_time
             cell.leagueLabel.text = obj.league_name
             cell.firstTeamLabel.text = obj.event_home_team
