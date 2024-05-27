@@ -21,12 +21,7 @@ class LeaguesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         leguesViewModel = LeguesViewModel()
-        
-        // for test fetching from core
-        //        let newLeague = Leagues(league_name: "Premier League", league_logo: "load", league_key: 1, sportName: "football")
-        //        LocalStorageService.insertLeague(newLeague)
-        //
-        
+    
         newtworkIndicator = UIActivityIndicatorView (style: .large)
         newtworkIndicator!.center = view.center
         newtworkIndicator!.startAnimating()
@@ -48,46 +43,47 @@ class LeaguesTableViewController: UITableViewController {
                 showAlert(message: "Sorry No Available Data For This Sport")
                 
             }else {
+                print (" from home ")
+
                 let lowercaseSportName = sportName.lowercased()
-                
+                let reachability = try! Reachability()
+                if reachability.connection == .unavailable{
+                    showAlert(message: "Open your network to see the leagues")
+                }
                 leguesViewModel?.getDataFromAPI(lowercaseSportName: lowercaseSportName)
                 
                 leguesViewModel?.bindResultToViewController = { [weak self] in
                     DispatchQueue.main.async {
                         self?.leaguesArray = self?.leguesViewModel?.allLegues ?? []
                         print("Fetched leagues in view controll: \(String(describing: self?.leaguesArray))")
-                        let reachability = try! Reachability()
-                        if reachability.connection == .unavailable{
-                            self?.showAlert(message: "Please Check your network")
-                        }
-                        //                        if self?.leaguesArray.isEmpty ?? false {
-                        //                            self?.showAlert(message: "Please Check your network")
-                        //                        }
+                        
+                      
                         self?.tableView.reloadData()
                         self?.newtworkIndicator?.stopAnimating()
                     }
                 }
             }
         } else  {
+//            do{
+//                try  LocalStorageService.clearAllFavLeagues()
+//                print ("delete all")
+//            }
+//            catch{
+//                print (" error in delet all")
+//            }
             
-            print (" fetch from data")
+            print (" show fav")
             
             leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
-            
+            print (" fetch from data from data \(leaguesArray)")
+
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()
         }
         
     }
     
-    func showAlert (message:String ){
-        let alert = UIAlertController(title: "Alert", message: message , preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        })
-        self.present(alert, animated: true, completion: nil)
-    }
-    
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -116,37 +112,30 @@ class LeaguesTableViewController: UITableViewController {
         if reachability.connection != .unavailable {
             
             let selectedleague = leaguesArray[indexPath.row]
-            
-            print("selectedleague= \(selectedleague.league_key!)")
-            print("selectedleague= \(selectedleague.league_name!)")
-            
             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
             
             if let sportName = sportName {
-                
                 legaguesDetailsScreen.sportName = sportName.lowercased()
                 legaguesDetailsScreen.legKey = selectedleague.league_key!
                 
             }else {
-                
                 legaguesDetailsScreen.sportName = selectedleague.sportName!
                 legaguesDetailsScreen.legKey = selectedleague.league_key!
-               
+                legaguesDetailsScreen.comeFromFav = true
             }
             
             legaguesDetailsScreen.modalPresentationStyle = .fullScreen
-
             present(legaguesDetailsScreen,animated: true)
-            
-            
         }else {
             print("Internet is off")
-            showAlert (message:" Please Check your network to show the details of leagues")
+            showAlert (message:" Open your network to show the details of leagues")
         }
     }
     
-    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+           return sportName == nil
+       }
     
     // for future if i want to make delete here but first check if is come from fav make it aviable and effect data base
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -160,6 +149,18 @@ class LeaguesTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
         }
+    }
+    
+    
+    func showAlert (message:String ){
+        newtworkIndicator?.stopAnimating()
+
+        let alert = UIAlertController(title: "Alert", message: message , preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+//            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

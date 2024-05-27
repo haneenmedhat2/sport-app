@@ -18,7 +18,6 @@ class LocalStorageService {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavLeagues")
 
         do {
-            print ("inside bring the data")
             let results = try UtilityObject.managedContext.fetch(fetchRequest)
             for result in results as! [NSManagedObject] {
                 let league_name = result.value(forKey: "league_name") as? String ?? ""
@@ -40,7 +39,7 @@ class LocalStorageService {
     }
     
     static func insertLeague(_ league: Leagues) {
-        print (" isert key \(league.league_key)")
+        print (" isernt key \(league)")
 
           let context = UtilityObject.managedContext
           let entity = NSEntityDescription.entity(forEntityName: "FavLeagues", in: context)!

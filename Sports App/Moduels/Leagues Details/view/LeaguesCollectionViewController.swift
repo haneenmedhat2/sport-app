@@ -14,6 +14,9 @@ class LeaguesCollectionViewController: UICollectionViewController {
     
     var sportName :String = ""
     var legKey : Int = 0
+    
+    var comeFromFav = false
+    
     var firstSection  = false
     var secondSection = false
     var thridSection = false
@@ -91,21 +94,27 @@ class LeaguesCollectionViewController: UICollectionViewController {
         
         let s = UIStoryboard(name: "Main", bundle: nil)
         let legaguesScreen = s.instantiateViewController(withIdentifier: "LeaguesTableViewController") as! LeaguesTableViewController
-        legaguesScreen.sportName = sportName
+
+        
+        if !comeFromFav {
+            
+            print (" in home")
+            
+            legaguesScreen.sportName = sportName
+            
+            //  it dosent not work
+            //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //        if let leaguesScreen = storyboard.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
+            //            leaguesScreen.sportName = sportName
+            //
+            //            if let navigationController = self.navigationController {
+            //                navigationController.pushViewController(leaguesScreen, animated: true)
+            //            }
+            //        }
+            
+        }
         legaguesScreen.modalPresentationStyle = .fullScreen
-
         present(legaguesScreen,animated: true)
-       
-       //  it dosent not work
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let leaguesScreen = storyboard.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
-//            leaguesScreen.sportName = sportName
-//            
-//            if let navigationController = self.navigationController {
-//                navigationController.pushViewController(leaguesScreen, animated: true)
-//            }
-//        }
-
     }
     
     
