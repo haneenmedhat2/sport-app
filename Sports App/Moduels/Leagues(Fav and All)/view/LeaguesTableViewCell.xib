@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3C-2p-ijC">
-                                <rect key="frame" x="76" y="18" width="236" height="21.666666666666671"/>
+                                <rect key="frame" x="76" y="22" width="236" height="21.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -36,14 +36,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="W3C-2p-ijC" secondAttribute="trailing" constant="8" id="4tp-Bf-zKA"/>
-                            <constraint firstAttribute="trailing" secondItem="W3C-2p-ijC" secondAttribute="trailing" constant="8" id="BaQ-3t-6Xf"/>
                             <constraint firstItem="q3I-pq-gpj" firstAttribute="leading" secondItem="hhR-PE-49e" secondAttribute="leading" constant="8" id="Ee9-FM-Oet"/>
                             <constraint firstAttribute="width" constant="320" id="MSH-Cq-or9"/>
                             <constraint firstItem="q3I-pq-gpj" firstAttribute="leading" secondItem="hhR-PE-49e" secondAttribute="leading" constant="8" id="QoC-77-h1C"/>
-                            <constraint firstItem="W3C-2p-ijC" firstAttribute="leading" secondItem="q3I-pq-gpj" secondAttribute="trailing" constant="8" symbolic="YES" id="RFK-wi-DTM"/>
+                            <constraint firstItem="W3C-2p-ijC" firstAttribute="leading" secondItem="q3I-pq-gpj" secondAttribute="trailing" constant="8" id="RFK-wi-DTM"/>
                             <constraint firstItem="q3I-pq-gpj" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" constant="8" id="YyQ-Ee-AnU"/>
                             <constraint firstItem="q3I-pq-gpj" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" constant="8" id="bgA-ql-4OF"/>
-                            <constraint firstItem="W3C-2p-ijC" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" constant="18" id="e7K-65-XXr"/>
+                            <constraint firstItem="W3C-2p-ijC" firstAttribute="top" secondItem="hhR-PE-49e" secondAttribute="top" constant="22" id="e7K-65-XXr"/>
                             <constraint firstAttribute="height" constant="103" id="oJH-h2-pGd"/>
                         </constraints>
                     </view>
