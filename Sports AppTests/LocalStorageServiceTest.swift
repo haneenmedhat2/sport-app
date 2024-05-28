@@ -19,7 +19,7 @@ final class LocalStorageServiceTest: XCTestCase {
         try LocalStorageService.clearAllFavLeagues()
     }
 
-    func testGetAllFavLeaguesEmpty() throws {
+     func testGetAllFavLeaguesEmpty() throws {
            let all = LocalStorageService.getAllFavLeagues()
            XCTAssertNotNil(all)
            XCTAssertTrue(all.isEmpty, "The list of favorite leagues should be empty")
@@ -36,6 +36,19 @@ final class LocalStorageServiceTest: XCTestCase {
            XCTAssertEqual(all.first?.league_key, 1)
            XCTAssertEqual(all.first?.sportName, "testSportName")
        }
-
+    
+    
+    func testDelete() throws {
+        
+        LocalStorageService.insertLeague(Leagues(league_name: "testLeagueName", league_logo: "testLogo", league_key: 1, sportName: "testSportName"))
+        
+        LocalStorageService.deleteLeague(leagueKey: 1)
+        
+        let all = LocalStorageService.getAllFavLeagues()
+        
+        XCTAssertTrue(all.isEmpty, "no favorite leagues ")
+    }
+ 
+ 
    
 }

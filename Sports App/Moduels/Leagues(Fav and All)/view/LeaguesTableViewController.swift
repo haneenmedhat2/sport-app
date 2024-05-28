@@ -21,7 +21,8 @@ class LeaguesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         leguesViewModel = LeguesViewModel()
-    
+        self.title = "ALL Leagues"
+
         newtworkIndicator = UIActivityIndicatorView (style: .large)
         newtworkIndicator!.center = view.center
         newtworkIndicator!.startAnimating()
@@ -162,6 +163,8 @@ class LeaguesTableViewController: UITableViewController {
         })
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
     
 }
 
