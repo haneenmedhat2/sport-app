@@ -115,6 +115,13 @@ class LeaguesTableViewController: UITableViewController {
             let selectedleague = leaguesArray[indexPath.row]
             let storyBoard = UIStoryboard(name: "SecondStoryBoard", bundle: nil)
             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
+
+            legaguesDetailsScreen.sportName = sportName!.lowercased()
+            legaguesDetailsScreen.legKey = selectedleague.league_key!
+            print(selectedleague.league_key)
+            //legaguesDetailsScreen.modalPresentationStyle = .fullScreen
+
+            present(legaguesDetailsScreen,animated: true)
             
             if let sportName = sportName {
                 legaguesDetailsScreen.sportName = sportName.lowercased()
