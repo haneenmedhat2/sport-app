@@ -13,14 +13,14 @@ class FetchDataFromNetwork {
      static func fetchLeg (sportName: String , completion: @escaping ([Leagues]?,Error?) -> Void) {
             var url =  "https://apiv2.allsportsapi.com/\(sportName)/?met=Leagues&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
 
-         print("url of fetch leagues \(url)")
+      //   print("url of fetch leagues \(url)")
          
          AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
           switch response.result {
              case .success(let value):
                  do {
                      let result = try JSONDecoder().decode(LeaguesResponse.self, from: value)
-                    print ("the result is\(result)")
+                 //   print ("the result is\(result)")
                      completion(result.result,nil)
                  } catch {
                      completion(nil,error)
@@ -42,7 +42,7 @@ class FetchDataFromNetwork {
             case .success(let value):
                 do {
                     let result = try JSONDecoder().decode(TeamResponse.self, from: value)
-                   print ("the result is\(result)")
+               //    print ("the result is\(result)")
                     completion(result,nil)
                 } catch {
                     completion(nil,error)
@@ -56,9 +56,10 @@ class FetchDataFromNetwork {
 
     
     func fetchUpcomingEvents(sport:String,leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
-        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-01-18&to=2024-12-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
-        
-        print("https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-01-18&to=2024-12-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df")
+        let url =
+           "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-05-18&to=2024-8-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+                
+        print("https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-05-18&to=2024-8-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df")
         
         AF.request(url).responseData { response in
             switch response.result {
@@ -76,11 +77,13 @@ class FetchDataFromNetwork {
         }
     }
     
+    
+    
     func fetchLatestEvents(sport:String,leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
-        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId))&from=2023-05-21&to=2024-05-21&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId))&from=2024-02-21&to=2024-05-21&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
         
-        print("latest\(url)")
+//        print("latest\(url)")
         AF.request(url).responseData { response in
             switch response.result {
             case .success(let data):
@@ -96,6 +99,8 @@ class FetchDataFromNetwork {
             }
         }
     }
+    
+    
     
     func fetchTeams(sport:String,leaguId: Int, completion: @escaping (Result<TeamsResponse, Error>) -> Void) {
         let url = "https://apiv2.allsportsapi.com/\(sport)/?&met=Teams&leagueId=\(leaguId)&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
@@ -116,6 +121,5 @@ class FetchDataFromNetwork {
         }
     }
     
-
 }
     

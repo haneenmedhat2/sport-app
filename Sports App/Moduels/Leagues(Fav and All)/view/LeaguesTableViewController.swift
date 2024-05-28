@@ -21,7 +21,7 @@ class LeaguesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         leguesViewModel = LeguesViewModel()
-        self.title = "ALL Leagues"
+        
 
         newtworkIndicator = UIActivityIndicatorView (style: .large)
         newtworkIndicator!.center = view.center
@@ -123,10 +123,13 @@ class LeaguesTableViewController: UITableViewController {
             }else {
                 legaguesDetailsScreen.sportName = selectedleague.sportName!
                 legaguesDetailsScreen.legKey = selectedleague.league_key!
-                legaguesDetailsScreen.comeFromFav = true
+              //  legaguesDetailsScreen.comeFromFav = true
             }
             
-            legaguesDetailsScreen.modalPresentationStyle = .fullScreen
+            legaguesDetailsScreen.leagueLog = selectedleague.league_logo ?? "noLogo"
+            legaguesDetailsScreen.leagueName = selectedleague.league_name ?? " No Name"
+            
+           // legaguesDetailsScreen.modalPresentationStyle = .fullScreen
             present(legaguesDetailsScreen,animated: true)
         }else {
             print("Internet is off")

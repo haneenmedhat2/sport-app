@@ -24,16 +24,14 @@ class TeamsCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupCell() {
+        
         contentView.layer.borderWidth = 1.0
-          contentView.layer.borderColor = UIColor.black.cgColor // Set the border color as needed
-          contentView.layer.cornerRadius = 20.0 // Adjust the corner radius as needed
+          contentView.layer.borderColor = UIColor.black.cgColor
+          contentView.layer.cornerRadius = 20.0
           contentView.layer.masksToBounds = true
 
-          // Set the background color of the contentView
-          contentView.backgroundColor = UIColor.white // Set your desired background color
-          
-          // Set the cell's background color to clear
-          self.backgroundColor = UIColor.clear
+          contentView.backgroundColor = UIColor.white
+         self.backgroundColor = UIColor.clear
     }
 
 }

@@ -59,20 +59,6 @@ class ViewController: UIViewController , UICollectionViewDelegate ,UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-  
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//            let selectedSport = sportArr[indexPath.row]
-//            if let sportDetailsVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
-//                
-//                sportDetailsVC.sportName = selectedSport.name
-//                // Set the modal presentation style to full screen
-//              //  sportDetailsVC.modalPresentationStyle = .fullScreen
-//                                        
-//                self.present(sportDetailsVC, animated: true, completion: nil)
-//            }
-//    }
-//    
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedSport = sportArr[indexPath.row]

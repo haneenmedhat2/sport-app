@@ -55,6 +55,7 @@ class UpComingViewModel{
         }
     }
     
+    
     func fetchLatestEvents(sport: String, leagueId: Int, completion: @escaping (Result<[Event], Error>) -> Void) {
         fetchDataFromNetwork.fetchLatestEvents(sport: sport, leaguId: leagueId) { result in
             switch result {
@@ -72,6 +73,7 @@ class UpComingViewModel{
             }
         }
     }
+    
     
     func fetchTeams(sport: String, leagueId: Int, completion: @escaping (Result<[Teams], Error>) -> Void) {
         fetchDataFromNetwork.fetchTeams(sport: sport, leaguId: leagueId) { result in
@@ -96,6 +98,15 @@ class UpComingViewModel{
        return  LocalStorageService.getAllFavLeagues()
     }
 
+    
+    
+    
+    func insertLeague(_ league: Leagues) {
+        
+        LocalStorageService.insertLeague(league)
+        
+    }
+        
 }
     
     

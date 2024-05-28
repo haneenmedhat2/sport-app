@@ -57,9 +57,9 @@ class TeamViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                        print("Fetched teamInfo in view controller: \(String(describing: self?.teamInfo.result.first?.team_name))")
                      self?.teamNameLabel.text = self?.teamInfo.result[0].team_name
                      
-                     self?.teamLogo?.kf.setImage(with: URL(string: self?.teamInfo.result[0].team_logo ?? "https://chiefexecutive.net/wp-content/uploads/2016/06/GettyImages-75404984-compressor.jpg"))
-                     
-                     
+                     self?.teamLogo?.kf.setImage(with: URL(string: self?.teamInfo.result[0].team_logo ?? "https://chiefexecutive.net/wp-content/uploads/2016/06/GettyImages-75404984-compressor.jpg"),placeholder: UIImage(named: "captine.jpg"))
+                   
+                      
                      self?.tableView.reloadData()
                      self?.newtworkIndicator?.stopAnimating()
                 }
