@@ -24,6 +24,8 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var secondTeamLabel: UILabel!
     
+    @IBOutlet weak var imageIndicator: UIImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()

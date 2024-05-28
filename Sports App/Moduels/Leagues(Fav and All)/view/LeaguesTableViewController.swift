@@ -123,6 +123,7 @@ class LeaguesTableViewController: UITableViewController {
             let legaguesDetailsScreen = storyBoard.instantiateViewController(withIdentifier: "leg") as! LeaguesCollectionViewController
             legaguesDetailsScreen.sportName = sportName!.lowercased()
             legaguesDetailsScreen.legKey = selectedleague.league_key!
+            print(selectedleague.league_key)
             //legaguesDetailsScreen.modalPresentationStyle = .fullScreen
 
             present(legaguesDetailsScreen,animated: true)

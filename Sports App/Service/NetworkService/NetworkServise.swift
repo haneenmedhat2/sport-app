@@ -36,6 +36,7 @@ class FetchDataFromNetwork {
     static func fetchTeamData (teamKey: Int ,sportName: String, completion: @escaping (TeamResponse?,Error?) -> Void) {
         print ("in fetch team")
         var url = "https://apiv2.allsportsapi.com/\(sportName)/?&met=Teams&teamId=\(teamKey)&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+        print(url)
         
         AF.request(url).responseData { (response: DataResponse<Data, AFError>)  in
          switch response.result {
@@ -56,7 +57,7 @@ class FetchDataFromNetwork {
 
     
     func fetchUpcomingEvents(sport:String,leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
-        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-01-18&to=2024-12-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-05-18&to=2024-8-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
         print("https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId)&from=2024-01-18&to=2024-12-18&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df")
         
@@ -77,9 +78,9 @@ class FetchDataFromNetwork {
     }
     
     func fetchLatestEvents(sport:String,leaguId: Int, completion: @escaping (Result<UpcomingResponse, Error>) -> Void) {
-        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId))&from=2023-05-21&to=2024-05-21&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
+        let url = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId))&from=2024-02-21&to=2024-05-21&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df"
         
-        
+        print("https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&leagueId=\(leaguId))&from=2024-02-21&to=2024-05-21&APIkey=c301f6eeebdbba75a16a845f135b9979996f7aaad6241449105d7eef268771df")
         print("latest\(url)")
         AF.request(url).responseData { response in
             switch response.result {

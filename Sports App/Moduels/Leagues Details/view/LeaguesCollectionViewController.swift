@@ -121,9 +121,25 @@ class LeaguesCollectionViewController: UICollectionViewController {
             showAlert(title: "Add To Favorite", message:"League Added To Favorite Successfully")
             sender.image = UIImage(systemName: "heart.fill")
         } else{
-            LocalStorageService.deleteLeague(leagueKey: legKey)
-            showAlert(title: "Delete From Favorite", message: "League Deleted Successfully")
-            sender.image = UIImage(systemName: "heart")
+            
+            
+            let alertController = UIAlertController(title: "Remove From Favorite", message: "Are you sure you want to remove this league from favorite?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                print("Cancel action tapped")
+            }
+            alertController.addAction(cancelAction)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                print("OK action tapped")
+                LocalStorageService.deleteLeague(leagueKey: self.legKey)
+                sender.image = UIImage(systemName: "heart")
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+
+            
+            
+            
             
         }
     }
@@ -243,7 +259,7 @@ func drawLatestComingEvents() -> NSCollectionLayoutSection{
     
     
     //create padding between groups
-    section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0)
     
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
     let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
@@ -262,7 +278,7 @@ func drawTeams() -> NSCollectionLayoutSection{
     let section = NSCollectionLayoutSection(group: group)
     
     section.orthogonalScrollingBehavior = .continuous
-    section.contentInsets = NSDirectionalEdgeInsets(top: 32, leading: 0, bottom: 10, trailing: 0)
+    section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 10, trailing: 0)
    
     
     let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
@@ -287,11 +303,25 @@ override func collectionView(_ collectionView: UICollectionView, numberOfItemsIn
     case 0:
         return  1
     case 1:
-        return  viewModel.upcomingEvents.count
+        if viewModel.upcomingEvents.isEmpty{
+            return 1
+        }else{
+            return  viewModel.upcomingEvents.count
+
+        }
     case 2:
+        if viewModel.latestEvents.isEmpty{
+            return 1
+        }else{
         return viewModel.latestEvents.count
+
+        }
     case 3:
-        return  viewModel.teams.count
+        if viewModel.teams.isEmpty{
+            return 1
+        }else{
+            return  viewModel.teams.count
+        }
     default:
         return viewModel.teams.count
 
@@ -317,25 +347,22 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
     }
     
     if indexPath.section == 1 {
+        cellIdentifier = "upcoming"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UpcomingCollectionViewCell
         if viewModel.upcomingEvents.isEmpty {
-            cellIdentifier = "emptyStateCell"
-                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-                      if let emptyImage = UIImage(named: "nothing.jpeg") {
-                          
-                          let imageView = UIImageView(image: emptyImage)
-                          imageView.contentMode = .scaleAspectFill
-                          imageView.frame = cell.contentView.bounds
-                          cell.contentView.addSubview(imageView)
-                      }
-                      return cell
+            cell.dateLabel.text = ""
+            cell.timeLabel.text = ""
+            cell.leagueLabel.text = "No Upcoming Events"
+            cell.firstTeamLabel.text = ""
+            cell.secondTeamLabel.text = ""
+            cell.firstTeamImg.image = UIImage()
+            cell.secondTeamImg.image = UIImage()
+            cell.imageIndicator.image = UIImage(named: "upcoming.png")
+            
+            return cell
             
         }else{
-            cellIdentifier = "upcoming"
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! UpcomingCollectionViewCell
-            
-  
-            
-            
+            cell.imageIndicator.isHidden = true
             let obj = viewModel.upcomingEvents[indexPath.row]
             let dateString = obj.event_date ?? "2024-6-1"
             let dateFormatter = DateFormatter()
@@ -352,18 +379,49 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
             cell.firstTeamLabel.text = obj.event_home_team
             cell.secondTeamLabel.text = obj.event_away_team
             
-            if let homeTeamLogoURLString = obj.home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
-                cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
-            } else {
-                cell.firstTeamImg.image = UIImage(named: "teams.png") // Placeholder image
-            }
             
-            if let awayTeamLogoURLString = obj.away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
-                cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
-            } else {
-                cell.secondTeamImg.image = UIImage(named: "teams.png") // Placeholder image
+            if sportName == "basketball" || sportName == "cricket"{
+                
+                if let homeTeamLogoURLString = obj.event_home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                    cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+                } else {
+                    cell.firstTeamImg.image = UIImage(named: "teams.png")
+                }
+                
+                if let awayTeamLogoURLString = obj.event_away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                    cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+                } else {
+                    cell.secondTeamImg.image = UIImage(named: "teams.png")
+                }
+            }else if sportName == "tennis"{
+                cell.firstTeamLabel.text = obj.event_first_player
+                cell.secondTeamLabel.text = obj.event_second_player
+                
+                if let homeTeamLogoURLString = obj.event_first_player_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                    cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+                } else {
+                    cell.firstTeamImg.image = UIImage(named: "teams.png")
+                }
+                
+                if let awayTeamLogoURLString = obj.event_away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                    cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+                } else {
+                    cell.secondTeamImg.image = UIImage(named: "teams.png")
+                }
+                
+            }else{
+                if let homeTeamLogoURLString = obj.event_second_player_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                    cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+                } else {
+                    cell.firstTeamImg.image = UIImage(named: "teams.png") // Placeholder image
+                }
+                
+                if let awayTeamLogoURLString = obj.away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                    cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+                } else {
+                    cell.secondTeamImg.image = UIImage(named: "teams.png") // Placeholder image
+                }
             }
-            
             
             return cell
         }
@@ -373,33 +431,89 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
     if indexPath.section == 2 {
         cellIdentifier = "latestEvent"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! LatestEventsCollectionViewCell
+        if viewModel.latestEvents.isEmpty{
+                        
+            cell.firstTeamLabel.text = ""
+            cell.secondTeamLabel.text = ""
+            cell.scoreLabel.text = ""
+            cell.firstTeamImg.image = UIImage(named: "")
+            cell.secondTeamImg.image = UIImage(named: "")
+        
+            return cell
             
-        let obj = viewModel.latestEvents[indexPath.row]
-      
-        cell.firstTeamLabel.text = obj.event_home_team
-        cell.secondTeamLabel.text = obj.event_away_team
-        cell.scoreLabel.text = obj.event_final_result
+        }else{
+           
+            cell.imgIndicator.isHidden = true
+            let obj = viewModel.latestEvents[indexPath.row]
+            cell.firstTeamLabel.text = obj.event_home_team
+            cell.secondTeamLabel.text = obj.event_away_team
+            
+            if sportName == "tennis"{
+                if let homeTeamLogoURLString = obj.event_first_player_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                    cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+                } else {
+                    cell.firstTeamImg.image = UIImage(named: "teams.png")
+                }
+                
+                if let awayTeamLogoURLString = obj.event_second_player_logo
+                    , let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                    cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+                } else {
+                    cell.secondTeamImg.image = UIImage(named: "teams.png")
+                }
+            }
+            
+            
+            if sportName == "cricket"{
         
-        if let homeTeamLogoURLString = obj.home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
-            cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
-        } else {
-            cell.firstTeamImg.image = UIImage(named: "teams.png")
+                cell.scoreLabel.text = obj.event_home_final_result
+                if obj.event_home_final_result == ""{
+                    cell.scoreLabel.text = "-"
+                }
+            }else{
+                cell.scoreLabel.text = obj.event_final_result
+            }
+            
+            if sportName == "basketball" || sportName == "cricket" {
+                
+                if let homeTeamLogoURLString = obj.event_home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                    cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+                } else {
+                    cell.firstTeamImg.image = UIImage(named: "teams.png")
+                }
+                
+                if let awayTeamLogoURLString = obj.event_away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                    cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+                } else {
+                    cell.secondTeamImg.image = UIImage(named: "teams.png")
+                }
+            }else{
+                if let homeTeamLogoURLString = obj.home_team_logo, let homeTeamLogoURL = URL(string: homeTeamLogoURLString) {
+                    cell.firstTeamImg.kf.setImage(with: homeTeamLogoURL)
+                } else {
+                    cell.firstTeamImg.image = UIImage(named: "teams.png")
+                }
+                
+                if let awayTeamLogoURLString = obj.away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
+                    cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
+                } else {
+                    cell.secondTeamImg.image = UIImage(named: "teams.png")
+                }
+            }
+            
+            
+            return cell
         }
-        
-        if let awayTeamLogoURLString = obj.away_team_logo, let awayTeamLogoURL = URL(string: awayTeamLogoURLString) {
-            cell.secondTeamImg.kf.setImage(with: awayTeamLogoURL)
-        } else {
-            cell.secondTeamImg.image = UIImage(named: "teams.png")
-        }
-        
-        
-        return cell
     }
     
     if indexPath.section == 3 {
         cellIdentifier = "teams"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TeamsCollectionViewCell
-            
+        if viewModel.teams.isEmpty{
+            cell.teamLabel.text = "No Data Available"
+            cell.teamImg.image = UIImage(named: "teams.png")
+            return cell
+        }
         let obj = viewModel.teams[indexPath.row]
       
         cell.teamLabel.text = obj.team_name
