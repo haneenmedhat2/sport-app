@@ -38,6 +38,9 @@ class UpComingViewModel{
     }
     
     func fetchUpcomingEvents(sport: String, leagueId: Int, completion: @escaping (Result<[Event], Error>) -> Void) {
+        
+        print("in fetchUpcomingEvents")
+        
         fetchDataFromNetwork.fetchUpcomingEvents(sport: sport, leaguId: leagueId) { result in
             switch result {
             case .success(let response):
@@ -57,6 +60,9 @@ class UpComingViewModel{
     
     
     func fetchLatestEvents(sport: String, leagueId: Int, completion: @escaping (Result<[Event], Error>) -> Void) {
+        print("in fetchLatestEvents")
+
+        
         fetchDataFromNetwork.fetchLatestEvents(sport: sport, leaguId: leagueId) { result in
             switch result {
             case .success(let response):

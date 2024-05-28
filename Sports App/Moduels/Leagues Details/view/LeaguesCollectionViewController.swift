@@ -44,7 +44,8 @@ class LeaguesCollectionViewController: UICollectionViewController {
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
         
         let layout = UICollectionViewCompositionalLayout
-        {sectionIndex,environment in
+        {
+            sectionIndex,environment in
             switch sectionIndex{
             case 0:
                 return self.drawNavigationCell()
@@ -59,6 +60,7 @@ class LeaguesCollectionViewController: UICollectionViewController {
                 
             }
         }
+        
         
         collectionView.setCollectionViewLayout(layout, animated:true)
         
@@ -79,30 +81,11 @@ class LeaguesCollectionViewController: UICollectionViewController {
                 self?.collectionView.reloadData()
             }
         }
-        fetchUpcomingEvents()
-        updateFavoriteButton()
-    }
-    
-    @IBAction func goBack(_ sender: UIBarButtonItem) {
         
-//        let s = UIStoryboard(name: "Main", bundle: nil)
-//        let legaguesScreen = s.instantiateViewController(withIdentifier: "LeaguesTableViewController") as! LeaguesTableViewController
-//        legaguesScreen.sportName = sportName
-//        legaguesScreen.modalPresentationStyle = .fullScreen
-//
-//        present(legaguesScreen,animated: true)
-       
-       //  it dosent not work
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let leaguesScreen = storyboard.instantiateViewController(withIdentifier: "LeaguesTableViewController") as? LeaguesTableViewController {
-//            leaguesScreen.sportName = sportName
-//
-//            if let navigationController = self.navigationController {
-//                navigationController.pushViewController(leaguesScreen, animated: true)
-//            }
-//        }
-
+        fetchUpcomingEvents()
+        
     }
+  
     
     
     @IBAction func addToFav(_ sender: UIBarButtonItem) {
@@ -115,13 +98,13 @@ class LeaguesCollectionViewController: UICollectionViewController {
         
         if foundObjects.isEmpty{
             print("is empty yes in add to fav.key is \(leagues.league_key)")
+            
             viewModel.insertLeague(leagues)
             
             showAlert(title: "Add To Favorite", message:"League Added To Favorite Successfully")
             sender.image = UIImage(systemName: "heart.fill")
         } else{
-            
-            
+                        
             let alertController = UIAlertController(title: "Remove From Favorite", message: "Are you sure you want to remove this league from favorite?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
                 print("Cancel action tapped")
@@ -139,41 +122,12 @@ class LeaguesCollectionViewController: UICollectionViewController {
         }
     }
         
-     func updateFavoriteButton() {
-         
-        let leaguesList = viewModel.getLocalData()
-         print ("the leg key in update fav button \(legKey)")
-         let foundObjects = leaguesList.filter { $0.league_key  == legKey}
-         
-        print (foundObjects)
-         
-//        if let favButton = navigationItem.rightBarButtonItem {
-            
-         let obj = NavigationCollectionViewCell()
-                 obj.favBtn.image = UIImage(systemName: "heart.fill")
-         
-         
-//            if !foundObjects.isEmpty {
-//                print (" is favvvvv")
-//                favButton.image = UIImage(systemName: "heart.fill")
-//            } else {
-//                print("is not favvvv")
-//                favButton.image = UIImage(systemName: "heart")
-//            }
-         
-         
-//        }
-//         else {
-//            print("is not enter at allllll")
-//
-//            
-//        }
-    }
-    
+
      func fetchUpcomingEvents() {
         viewModel.fetchUpcomingEvents(sport: sportName, leagueId: legKey) { [weak self] result in
             switch result {
             case .success(let events):
+                print(" result get successful in fetching up coming event")
                 self?.firstSection = true
             case .failure(let error):
                 self?.firstSection = true
@@ -185,6 +139,8 @@ class LeaguesCollectionViewController: UICollectionViewController {
         viewModel.fetchLatestEvents(sport: sportName, leagueId: legKey) { [weak self] result in
             switch result {
             case .success(let events):
+                print(" result get successful fetchLatestEvents")
+
                 self?.secondSection = true
             case .failure(let error):
                 self?.secondSection = true
@@ -348,11 +304,16 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
         cellIdentifier = "cell"
                   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! NavigationCollectionViewCell
         let leaguesList = viewModel.getLocalData()
-         let foundObjects = leaguesList.filter { $0.league_name == viewModel.upcomingEvents.first?.league_name }
-         
+         let foundObjects = leaguesList.filter { $0.league_key == legKey }
+        
+         print(" found obje\(foundObjects)")
+        
         if !foundObjects.isEmpty {
+            print("is  fav")
                  cell.favBtn.image = UIImage(systemName: "heart.fill")
              } else {
+                 print("is not fav")
+
                  cell.favBtn.image = UIImage(systemName: "heart")
              }
          
@@ -582,7 +543,6 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            goBack(UIBarButtonItem())
             addToFav( UIBarButtonItem())
         }
         

@@ -32,19 +32,27 @@ class LeaguesTableViewController: UITableViewController {
         tableView.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear( animated)
+        
+        print("viewDidDisappear")
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        print("viewWillAppear ")
         newtworkIndicator!.startAnimating()
         
         if let sportName = sportName {
             
             if sportName == "Hockey" || sportName == "Baseball" || sportName == "American" || sportName == "American Football" {
-                print (" is name of not data")
                 newtworkIndicator?.stopAnimating()
                 showAlert(message: "Sorry No Available Data For This Sport")
                 
             }else {
-                print (" from home ")
 
                 let lowercaseSportName = sportName.lowercased()
                 let reachability = try! Reachability()
@@ -56,28 +64,13 @@ class LeaguesTableViewController: UITableViewController {
                 leguesViewModel?.bindResultToViewController = { [weak self] in
                     DispatchQueue.main.async {
                         self?.leaguesArray = self?.leguesViewModel?.allLegues ?? []
-                        print("Fetched leagues in view controll: \(String(describing: self?.leaguesArray))")
-                        
-                      
                         self?.tableView.reloadData()
                         self?.newtworkIndicator?.stopAnimating()
                     }
                 }
             }
         } else  {
-//            do{
-//                try  LocalStorageService.clearAllFavLeagues()
-//                print ("delete all")
-//            }
-//            catch{
-//                print (" error in delet all")
-//            }
-            
-            print (" show fav")
-            
             leaguesArray = leguesViewModel?.getAllFavLeagues() ?? []
-            print (" fetch from data from data \(leaguesArray)")
-
             tableView.reloadData()
             newtworkIndicator?.stopAnimating()
         }
@@ -129,7 +122,7 @@ class LeaguesTableViewController: UITableViewController {
             legaguesDetailsScreen.leagueLog = selectedleague.league_logo ?? "noLogo"
             legaguesDetailsScreen.leagueName = selectedleague.league_name ?? " No Name"
             
-           // legaguesDetailsScreen.modalPresentationStyle = .fullScreen
+           legaguesDetailsScreen.modalPresentationStyle = .fullScreen
             present(legaguesDetailsScreen,animated: true)
         }else {
             print("Internet is off")

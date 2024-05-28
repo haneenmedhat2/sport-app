@@ -109,12 +109,6 @@
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <items>
                                                 <navigationItem title="League Details" id="Kff-T8-YsE">
-                                                    <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="Fa1-sp-voT">
-                                                        <color key="tintColor" name="AccentColor"/>
-                                                        <connections>
-                                                            <action selector="goBack:" destination="o7E-kf-avj" id="6yP-5i-e7M"/>
-                                                        </connections>
-                                                    </barButtonItem>
                                                     <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="1d7-hz-MwR">
                                                         <color key="tintColor" name="AccentColor"/>
                                                         <connections>
@@ -336,7 +330,6 @@
     </scenes>
     <resources>
         <image name="ahly" width="239" height="300"/>
-        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="z" width="1024" height="1024"/>
         <namedColor name="AccentColor">
