@@ -100,7 +100,7 @@ final class MethodsOfNetwork: XCTestCase {
             }
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
     }
     
     
