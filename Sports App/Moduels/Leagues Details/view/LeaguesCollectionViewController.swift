@@ -331,37 +331,14 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
             cell.secondTeamLabel.text = ""
             cell.firstTeamImg.image = UIImage()
             cell.secondTeamImg.image = UIImage()
-        
-            
-            
-            
-            
-            
-            
-            
-            
-            // cell.imageIndicator.image = UIImage(named: "upcoming")
-            
-            
-            
-            
-            
-            
-            
-            
-            
+             cell.imageIndicator.image = UIImage(named: "upcoming")
             return cell
             
         }else{
             
             
             
-          //cell.imageIndicator.isHidden = true
-           
-            
-            
-            
-            
+          cell.imageIndicator.isHidden = true
             let obj = viewModel.upcomingEvents[indexPath.row]
             let dateString = obj.event_date ?? "2024-6-1"
             let dateFormatter = DateFormatter()
@@ -441,12 +418,7 @@ override func collectionView(_ collectionView: UICollectionView, cellForItemAt i
             return cell
             
         }else{
-           
-            
-            
-            
-            
-       //     cell.imgIndicator.isHidden = true
+           cell.imgIndicator.isHidden = true
             
             
             

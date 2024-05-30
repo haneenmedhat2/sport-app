@@ -18,7 +18,7 @@ class LatestEventsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var secondTeamImg: UIImageView!
     
     @IBOutlet weak var secondTeamLabel: UILabel!
-    
+
     @IBOutlet weak var imgIndicator: UIImageView!
     
     override init(frame: CGRect) {

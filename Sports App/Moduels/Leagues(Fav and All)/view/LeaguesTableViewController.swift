@@ -122,7 +122,7 @@ class LeaguesTableViewController: UITableViewController {
             legaguesDetailsScreen.leagueLog = selectedleague.league_logo ?? "noLogo"
             legaguesDetailsScreen.leagueName = selectedleague.league_name ?? " No Name"
             
-           legaguesDetailsScreen.modalPresentationStyle = .fullScreen
+          // legaguesDetailsScreen.modalPresentationStyle = .fullScreen
             present(legaguesDetailsScreen,animated: true)
         }else {
             print("Internet is off")
