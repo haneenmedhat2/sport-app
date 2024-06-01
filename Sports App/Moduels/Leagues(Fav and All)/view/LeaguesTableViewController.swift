@@ -123,7 +123,7 @@ class LeaguesTableViewController: UITableViewController {
             legaguesDetailsScreen.leagueName = selectedleague.league_name ?? " No Name"
             
             // make next screen full screen . so if close here view will appear called
-          legaguesDetailsScreen.modalPresentationStyle = .fullScreen
+       //   legaguesDetailsScreen.modalPresentationStyle = .fullScreen
             present(legaguesDetailsScreen,animated: true)
         }else {
             print("Internet is off")
